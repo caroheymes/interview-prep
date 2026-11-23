@@ -11,8 +11,8 @@ DECK_HTML = WORKSPACE / "index.html"
 VIDEO_TMP_DIR = UTILS_DIR / "_tmp_video"
 VIDEO_TMP_DIR.mkdir(parents=True, exist_ok=True)
 
-OUT_MP4 = WORKSPACE / "demarche_ecg.mp4"
-OUT_THUMB = WORKSPACE / "demarche_ecg_thumb.png"
+OUT_MP4 = WORKSPACE / "demarche_demo.mp4"
+OUT_THUMB = WORKSPACE / "demarche_demo_thumb.png"
 CHROME_EXE = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 

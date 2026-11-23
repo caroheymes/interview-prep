@@ -1,4 +1,4 @@
-# PRD exécutif (version 2, style contrôlé ASD-STE100): plateforme interne de tarification dynamique d'European Camping Group
+# PRD exécutif (version 2, style contrôlé ASD-STE100): plateforme interne de tarification dynamique d'Opérateur HPA Européen
 
 Date: 2026-11-23
 Version: 2.0 (réécriture selon les principes ASD-STE100 appliqués au français technique)
@@ -14,29 +14,29 @@ Ce document applique les principes ASD-STE100 pour supprimer toute ambiguïté d
 | Terme contrôlé | Définition unique |
 | :--- | :--- |
 | Le Système | La plateforme interne de tarification dynamique construite sur GCP et BigQuery. |
-| Le Modèle interne | L'ensemble formé par le module de prévision et le module d'optimisation d'ECG. |
-| Le Modèle externe | L'algorithme tarifaire du prestataire tiers actuellement utilisé par ECG. |
+| Le Modèle interne | L'ensemble formé par le module de prévision et le module d'optimisation d'Client Cible. |
+| Le Modèle externe | L'algorithme tarifaire du prestataire tiers actuellement utilisé par Client Cible. |
 | Le Cockpit | L'interface de consultation et de validation déployée dans Tableau ou Dash. |
-| Resalys | Le logiciel transactionnel (CRS-PMS) qui gère l'inventaire, les caches et les ventes. |
+| PMS central | Le logiciel transactionnel (CRS-PMS) qui gère l'inventaire, les caches et les ventes. |
 | Le Revenue Manager | L'utilisateur métier d'Aix-en-Provence, de Montpellier ou de Breda qui valide les tarifs. |
 | Un Débrayage | Toute modification manuelle d'un tarif recommandé par un Revenue Manager. |
-| Un Site propre | L'un des 117 campings exploités en propre par ECG (incluant Alannia). |
-| Un Site partenaire | L'un des quelque 350 campings tiers hébergeant des mobil-homes ECG en tour-opérateur. |
+| Un Site propre | L'un des 117 campings exploités en propre par Client Cible (incluant Resorts Annuels A). |
+| Un Site partenaire | L'un des quelque 350 campings tiers hébergeant des mobil-homes Client Cible en tour-opérateur. |
 
 ---
 
 ## 2. Objet, périmètre et phases de déploiement
 
-Le Système remplace progressivement le Modèle externe sur plus de 450 destinations européennes. Le Système fonctionne sur GCP et BigQuery. Resalys conserve la gestion des stocks, des caches tarifaires et des passerelles de vente.
+Le Système remplace progressivement le Modèle externe sur plus de 450 destinations européennes. Le Système fonctionne sur GCP et BigQuery. PMS central conserve la gestion des stocks, des caches tarifaires et des passerelles de vente.
 
 Le déploiement suit quatre phases sur 12 mois:
 1. Phase 1 (M1 à M3): l'équipe Data réalise l'audit contrefactuel du Modèle externe dans BigQuery.
 2. Phase 2 (M3 à M6): le Système exécute le Modèle interne en mode ombre (shadow mode) sans publication.
 3. Phase 3 (M6 à M9): le Système bascule des segments pilotes en production selon un protocole Champion/Challenger.
-4. Phase 4 (M9 à M12+): ECG retire le Modèle externe, couvre tout le parc et ajoute la veille tarifaire.
+4. Phase 4 (M9 à M12+): Client Cible retire le Modèle externe, couvre tout le parc et ajoute la veille tarifaire.
 
 Le périmètre exclut quatre éléments:
-1. Toute réécriture du PMS Resalys.
+1. Toute réécriture du PMS PMS central.
 2. Toute gestion des plans de parcelles ou de l'inventaire physique.
 3. Tout serveur d'inférence temps réel permanent hors cycle batch.
 4. Tout calcul de prix personnalisé à partir de données personnelles.
@@ -52,7 +52,7 @@ L'équipe utilise cette grille pour classer chaque segment ou lot fonctionnel av
 | Impact marge nette et RevPAC | 35 | Gain estimé en Net RevPAC HT et correction d'un biais prouvé du Modèle externe. |
 | Adoptabilité Revenue Management | 25 | Baisse attendue du Débrayage, clarté SHAP et simplicité d'usage à Aix, Montpellier et Breda. |
 | Faisabilité data et sobriété MLOps | 25 | Disponibilité des données dans BigQuery et maintien en batch par l'équipe de 12 à 15 experts. |
-| Maîtrise des risques et conformité | 15 | Repli rapide vers Resalys, conformité juridique (Omnibus, art. L. 221-5, DMA, AI Act). |
+| Maîtrise des risques et conformité | 15 | Repli rapide vers PMS central, conformité juridique (Omnibus, art. L. 221-5, DMA, AI Act). |
 
 ### Seuils de décision
 1. Score supérieur ou égal à 75/100: statut Go (exécution immédiate sur le trimestre).
@@ -63,7 +63,7 @@ L'équipe utilise cette grille pour classer chaque segment ou lot fonctionnel av
 1. Le lot prévoit une première mise en production en juin, juillet ou août.
 2. Le lot utilise un identifiant client ou une donnée personnelle en entrée du modèle.
 3. Le lot ne dispose d'aucun historique permettant un test Champion/Challenger.
-4. Le lot ne permet pas un retour aux grilles Resalys en moins de 2 heures.
+4. Le lot ne permet pas un retour aux grilles PMS central en moins de 2 heures.
 5. Le lot branche un agent conversationnel sur BigQuery sans couche sémantique gouvernée.
 
 ---
@@ -73,7 +73,7 @@ L'équipe utilise cette grille pour classer chaque segment ou lot fonctionnel av
 Chaque exigence décrit une action unique et vérifiable du Système.
 
 ### Capacité A: audit contrefactuel et socle BigQuery (M1 à M3)
-FR-01: Le Système ingère chaque jour les réservations, stocks, prix publiés et restrictions depuis Resalys vers BigQuery.
+FR-01: Le Système ingère chaque jour les réservations, stocks, prix publiés et restrictions depuis PMS central vers BigQuery.
 FR-02: Le Système ingère chaque jour l'historique des prix recommandés par le Modèle externe dans BigQuery.
 FR-03: Le Système compare les prix du Modèle externe, les prix publiés et le RevPAC réalisé par segment.
 FR-04: Dataform construit des tables de features versionnées incluant le booking pace N-1 et N-2 par horizon.
@@ -102,8 +102,8 @@ FR-20: Le Cockpit fournit un simulateur permettant au Revenue Manager de tester 
 FR-21: Hors juillet et août, le Système publie automatiquement les variations situées dans la bande de tolérance convenue.
 FR-22: En juillet et août, le Système exige une validation humaine avant toute publication de prix.
 FR-23: Pour chaque Débrayage, le Cockpit impose la sélection d'un motif structuré en une ligne.
-FR-24: Le Système pousse les tarifs validés vers Resalys par lots via le connecteur 2-ways.
-FR-25: Le Système déclenche un pré-chauffage des caches `semainier` et `journalier` après chaque lot d'écriture Resalys.
+FR-24: Le Système pousse les tarifs validés vers PMS central par lots via le connecteur 2-ways.
+FR-25: Le Système déclenche un pré-chauffage des caches `semainier` et `journalier` après chaque lot d'écriture PMS central.
 FR-26: Le module Champion/Challenger suit chaque mois les écarts de Net RevPAC, de marge et de Débrayage entre modèles.
 FR-27: En Phase 4, le Système collecte uniquement des prix concurrents publics affichés sur les marchés européens.
 FR-28: En Phase 4, le Système expose une couche sémantique BigQuery avant tout assistant conversationnel (mention AI Act art. 50).
@@ -115,14 +115,14 @@ FR-28: En Phase 4, le Système expose une couche sémantique BigQuery avant tout
 ### Performance et cadence
 NFR-01: Le batch quotidien complet s'exécute en moins de 90 minutes et termine avant 07h30 CET.
 NFR-02: Chaque vue régionale du Cockpit charge en moins de 5 secondes sans dépendre de BigQuery BI Engine.
-NFR-03: Le module d'écriture Resalys respecte la latence API (4 secondes hors cache) par discrétisation en lots.
+NFR-03: Le module d'écriture PMS central respecte la latence API (4 secondes hors cache) par discrétisation en lots.
 
 ### Fiabilité et sobriété MLOps
 NFR-04: Le Système utilise uniquement BigQuery, Dataform, Cloud Workflows, Cloud Run Jobs, Docker, Terraform et GitHub Actions.
 NFR-05: Le Système exclut tout Feature Store temps réel permanent et tout cluster GKE actif 24h/24.
 NFR-06: Le Système archive le code, les features, le modèle et les paramètres de chaque prix pendant 24 mois.
 NFR-07: Une sonde hebdomadaire mesure la dérive des données (data drift) et l'erreur MAPE/WAPE par segment.
-NFR-08: L'équipe peut restaurer les grilles de sécurité Resalys en moins de 2 heures sans coupure de vente.
+NFR-08: L'équipe peut restaurer les grilles de sécurité PMS central en moins de 2 heures sans coupure de vente.
 
 ### Sécurité et conformité
 NFR-09: Le Système traite zéro donnée personnelle identifiable dans le pipeline de tarification (conformité RGPD et art. L. 221-5).
@@ -147,11 +147,11 @@ La hausse de la North-Star Metric est validée uniquement si les cinq seuils ci-
 | Signal client et partenaire | Avis 1-2 étoiles citant le prix et litiges partenaires | Hausse significative sur 2 semaines consécutives |
 
 ### Kill-switches (arrêt automatique et repli)
-Le Système suspend la publication automatique vers Resalys et bascule sur les grilles de sécurité dès qu'une condition ci-dessous survient:
+Le Système suspend la publication automatique vers PMS central et bascule sur les grilles de sécurité dès qu'une condition ci-dessous survient:
 1. Kill-switch financier: le Net RevPAC ou le booking pace chute de plus de 5 % sur 14 jours face au groupe témoin, hors événement météo ou incendie documenté.
 2. Kill-switch intégrité: le Système détecte un prix hors bornes, un taux de TVA erroné ou un écart cache-checkout supérieur à 1 %.
 3. Kill-switch adoption: le taux de Débrayage dépasse 40 % pendant 7 jours consécutifs sur un segment en production.
-4. Kill-switch conformité et data: le Système détecte une donnée personnelle, un retard Resalys supérieur à 24 heures ou une erreur sur la table Omnibus 30 jours.
+4. Kill-switch conformité et data: le Système détecte une donnée personnelle, un retard PMS central supérieur à 24 heures ou une erreur sur la table Omnibus 30 jours.
 
 ---
 

@@ -17,11 +17,11 @@ OUT_SCRATCH_TXT = SCRATCH_DIR / "whisper_raw.txt"
 
 INITIAL_PROMPT = (
     "Entretien de recrutement Data Scientist Senior Pricing et Revenue Management chez "
-    "European Camping Group (ECG) avec Hugo Rannou, Noélie et Caroline Heymes. "
-    "Termes techniques: Resalys, BigQuery, architecture médaillon, ORTEC, Homair, Eurocamp, "
+    "Opérateur HPA Européen (Client Cible) avec le Responsable Data, la Consultante Recrutement et Caroline Heymes. "
+    "Termes techniques: PMS central, BigQuery, architecture médaillon, Prestataire externe, Marque A, Marque C, "
     "yield management, ancillaries, F&B, Omnibus, TVA, A/B test, clustering, XGBoost, "
     "Random Forest, Prophet, time series, booking pace, pick-up, data drift, concept drift, "
-    "voicebot, call center, Interflora, Centrale Lyon, EM Lyon."
+    "voicebot, call center, Acteur européen du e-commerce périssable, Centrale Lyon, EM Lyon."
 )
 
 

@@ -9,8 +9,8 @@ CARTOON_HTML = UTILS_DIR / "cartoon_explainer.html"
 VIDEO_TMP_DIR = UTILS_DIR / "_tmp_cartoon"
 VIDEO_TMP_DIR.mkdir(parents=True, exist_ok=True)
 
-OUT_MP4 = WORKSPACE / "demarche_ecg_cartoon.mp4"
-OUT_THUMB = WORKSPACE / "demarche_ecg_cartoon_thumb.png"
+OUT_MP4 = WORKSPACE / "demarche_cartoon.mp4"
+OUT_THUMB = WORKSPACE / "demarche_cartoon_thumb.png"
 CHROME_EXE = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 

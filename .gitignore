@@ -1,0 +1,15 @@
+# Raw private inputs, recordings, transcripts and personal data
+00_inputs/
+*.pdf
+presentation_ecg.pptx
+demarche_ecg.mp4
+demarche_ecg_thumb.png
+demarche_ecg_cartoon.mp4
+demarche_ecg_cartoon_thumb.png
+
+# Temporary build folders
+utils/_tmp_*
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

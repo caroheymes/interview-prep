@@ -8,7 +8,7 @@ from pptx.util import Inches
 UTILS_DIR = Path(__file__).resolve().parent
 WORKSPACE = UTILS_DIR.parent
 HTML_PATH = WORKSPACE / "index.html"
-PPTX_PATH = WORKSPACE / "presentation_ecg_v2.pptx"
+PPTX_PATH = WORKSPACE / "presentation_pricing_v2.pptx"
 SCRATCH_DIR = UTILS_DIR / "_tmp_slides_png"
 SCRATCH_DIR.mkdir(parents=True, exist_ok=True)
 
