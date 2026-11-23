@@ -1,0 +1,1602 @@
+[
+  {
+    "id": 1,
+    "start": 0.0,
+    "end": 11.56,
+    "start_ts": "00:00",
+    "end_ts": "00:12",
+    "text": "En fait tu sais quand je t'ai dis que c'est un test technique qui t'envoie à faire quand tu peux et après des briefings avec une équipe technique pour savoir..."
+  },
+  {
+    "id": 2,
+    "start": 11.56,
+    "end": 21.76,
+    "start_ts": "00:12",
+    "end_ts": "00:22",
+    "text": "Tu veux dire que le jour de l'anniversaire de ma fille, alors qu'elle revient de Paris, que ça va faire trois semaines que je ne l'ai pas vu..."
+  },
+  {
+    "id": 3,
+    "start": 21.76,
+    "end": 25.16,
+    "start_ts": "00:22",
+    "end_ts": "00:25",
+    "text": "Oh non mais après sinon, la début de semaine prochaine ?"
+  },
+  {
+    "id": 4,
+    "start": 25.16,
+    "end": 26.52,
+    "start_ts": "00:25",
+    "end_ts": "00:27",
+    "text": "Ouais, ce serait mieux."
+  },
+  {
+    "id": 5,
+    "start": 26.52,
+    "end": 27.02,
+    "start_ts": "00:27",
+    "end_ts": "00:27",
+    "text": "Ouais ?"
+  },
+  {
+    "id": 6,
+    "start": 27.02,
+    "end": 27.52,
+    "start_ts": "00:27",
+    "end_ts": "00:28",
+    "text": "Ouais."
+  },
+  {
+    "id": 7,
+    "start": 27.95,
+    "end": 103.18,
+    "start_ts": "00:28",
+    "end_ts": "01:43",
+    "text": "________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+  },
+  {
+    "id": 8,
+    "start": 106.0,
+    "end": 110.16,
+    "start_ts": "01:46",
+    "end_ts": "01:50",
+    "text": "On peut essayer de tous s'y connecter, on sera sur Google Meet, est-ce que ça va fonctionner ou pas ?"
+  },
+  {
+    "id": 9,
+    "start": 110.16,
+    "end": 116.83,
+    "start_ts": "01:50",
+    "end_ts": "01:57",
+    "text": "Moi je suis pas sûre d'avoir du son sur Meet, c'est un gag, mais je peux essayer puis mon téléphone."
+  },
+  {
+    "id": 10,
+    "start": 116.83,
+    "end": 119.99,
+    "start_ts": "01:57",
+    "end_ts": "02:00",
+    "text": "Non mais je peux essayer éventuellement d'avoir le son sur mon téléphone."
+  },
+  {
+    "id": 11,
+    "start": 119.99,
+    "end": 129.53,
+    "start_ts": "02:00",
+    "end_ts": "02:10",
+    "text": "Comme tu veux."
+  },
+  {
+    "id": 12,
+    "start": 129.53,
+    "end": 137.57,
+    "start_ts": "02:10",
+    "end_ts": "02:18",
+    "text": "Tout pareil."
+  },
+  {
+    "id": 13,
+    "start": 137.57,
+    "end": 166.06,
+    "start_ts": "02:18",
+    "end_ts": "02:46",
+    "text": "Si qu'un, c'est Jean-Pierre et pas forcément vendeur, vos experts voient de votre parcours."
+  },
+  {
+    "id": 14,
+    "start": 169.49,
+    "end": 171.05,
+    "start_ts": "02:49",
+    "end_ts": "02:51",
+    "text": "Super."
+  },
+  {
+    "id": 15,
+    "start": 180.14,
+    "end": 187.14,
+    "start_ts": "03:00",
+    "end_ts": "03:07",
+    "text": "Je suis architecte en IAS, ce qui veut dire que je sais concevoir des pipelines avec des microservices"
+  },
+  {
+    "id": 16,
+    "start": 187.14,
+    "end": 195.24,
+    "start_ts": "03:07",
+    "end_ts": "03:15",
+    "text": "pour pouvoir réentraîner automatiquement des modèles quand il y a un data drift ou un concept drift."
+  },
+  {
+    "id": 17,
+    "start": 198.38,
+    "end": 207.38,
+    "start_ts": "03:18",
+    "end_ts": "03:27",
+    "text": "Data Scientist pendant un peu plus de trois ans chez Interflora, j'ai travaillé sur des prévisions d'activités avec des séries temporelles."
+  },
+  {
+    "id": 18,
+    "start": 207.38,
+    "end": 219.38,
+    "start_ts": "03:27",
+    "end_ts": "03:39",
+    "text": "Un truc que j'ai pas indiqué, c'est que j'ai aussi essayé de prédire pourquoi la marge s'effondrait sur certaines commandes qu'on livrait."
+  },
+  {
+    "id": 19,
+    "start": 219.38,
+    "end": 225.38,
+    "start_ts": "03:39",
+    "end_ts": "03:45",
+    "text": "J'ai mis aussi en place un dashboard sur quatre pays."
+  },
+  {
+    "id": 20,
+    "start": 225.65,
+    "end": 234.9,
+    "start_ts": "03:46",
+    "end_ts": "03:55",
+    "text": "Pour surveiller l'élasticité, prix, position, catégorie de nos produits et ceux de nos concurrents, France, Espagne, Italie."
+  },
+  {
+    "id": 21,
+    "start": 236.9,
+    "end": 245.9,
+    "start_ts": "03:57",
+    "end_ts": "04:06",
+    "text": "Et puis avant tout ça, j'ai passé un peu plus de 10 ans à côté du métier pour construire des solutions fondées sur la data"
+  },
+  {
+    "id": 22,
+    "start": 246.9,
+    "end": 252.9,
+    "start_ts": "04:07",
+    "end_ts": "04:13",
+    "text": "pour résoudre des questions de positionnement, ciblage, évaluation de marché ou d'acteurs."
+  },
+  {
+    "id": 23,
+    "start": 254.22,
+    "end": 279.09,
+    "start_ts": "04:14",
+    "end_ts": "04:39",
+    "text": "J'aime bien SQL. Si j'en suis à faire un manifesto, du moins un modèle d'IA doit être explicable pour que le métier puisse s'en servir et que l'on est au service des métiers."
+  },
+  {
+    "id": 24,
+    "start": 279.06,
+    "end": 302.98,
+    "start_ts": "04:39",
+    "end_ts": "05:03",
+    "text": "Voilà donc j'aime bien construire à l'établi assis à côté d'eux. Et j'habite à Lyon, ouais. Ah c'est bien ça !"
+  },
+  {
+    "id": 25,
+    "start": 302.98,
+    "end": 308.52,
+    "start_ts": "05:03",
+    "end_ts": "05:09",
+    "text": "En face, si j'ai bien compris votre CV, vous avez fait au départ le EM Lyon, c'est ça ?"
+  },
+  {
+    "id": 26,
+    "start": 308.52,
+    "end": 309.52,
+    "start_ts": "05:09",
+    "end_ts": "05:10",
+    "text": "Ouais."
+  },
+  {
+    "id": 27,
+    "start": 309.52,
+    "end": 311.83,
+    "start_ts": "05:10",
+    "end_ts": "05:12",
+    "text": "J'étais juste en face."
+  },
+  {
+    "id": 28,
+    "start": 311.83,
+    "end": 312.83,
+    "start_ts": "05:12",
+    "end_ts": "05:13",
+    "text": "À Centrale ?"
+  },
+  {
+    "id": 29,
+    "start": 312.83,
+    "end": 317.38,
+    "start_ts": "05:13",
+    "end_ts": "05:17",
+    "text": "En face."
+  },
+  {
+    "id": 30,
+    "start": 317.38,
+    "end": 318.38,
+    "start_ts": "05:17",
+    "end_ts": "05:18",
+    "text": "Ouais, ouais, donc à Centrale quoi."
+  },
+  {
+    "id": 31,
+    "start": 318.38,
+    "end": 319.9,
+    "start_ts": "05:18",
+    "end_ts": "05:20",
+    "text": "Comment on parle ?"
+  },
+  {
+    "id": 32,
+    "start": 319.9,
+    "end": 320.9,
+    "start_ts": "05:20",
+    "end_ts": "05:21",
+    "text": "Donc à Centrale."
+  },
+  {
+    "id": 33,
+    "start": 320.9,
+    "end": 321.9,
+    "start_ts": "05:21",
+    "end_ts": "05:22",
+    "text": "C'est ça, à Centrale."
+  },
+  {
+    "id": 34,
+    "start": 325.17,
+    "end": 331.17,
+    "start_ts": "05:25",
+    "end_ts": "05:31",
+    "text": "Oui, j'ai piqué aux rues des couverts et les petits verres. Ils étaient vachement bien."
+  },
+  {
+    "id": 35,
+    "start": 331.17,
+    "end": 338.46,
+    "start_ts": "05:31",
+    "end_ts": "05:38",
+    "text": "Ah oui, d'accord. Vous étiez bien liés avec vous, je me souviens."
+  },
+  {
+    "id": 36,
+    "start": 338.46,
+    "end": 351.19,
+    "start_ts": "05:38",
+    "end_ts": "05:51",
+    "text": "Nous, on venait plus aller pour... Certains ont commencé à remonter, ce n'est pas forcément."
+  },
+  {
+    "id": 37,
+    "start": 351.19,
+    "end": 354.77,
+    "start_ts": "05:51",
+    "end_ts": "05:55",
+    "text": "Je suis responsable de l'équipe data chez ECG."
+  },
+  {
+    "id": 38,
+    "start": 354.77,
+    "end": 362.38,
+    "start_ts": "05:55",
+    "end_ts": "06:02",
+    "text": "Cette équipe data, elle a toutes les responsabilités du début du pipeline jusqu'à l'exposition de la donnée au métier."
+  },
+  {
+    "id": 39,
+    "start": 362.38,
+    "end": 367.08,
+    "start_ts": "06:02",
+    "end_ts": "06:07",
+    "text": "C'est-à-dire qu'on a des data engineers, des data analysts, des data scientists."
+  },
+  {
+    "id": 40,
+    "start": 369.17,
+    "end": 397.09,
+    "start_ts": "06:09",
+    "end_ts": "06:37",
+    "text": "Le système de réservation est un système central qui ne nous appartient pas, c'est un logicien."
+  },
+  {
+    "id": 41,
+    "start": 397.09,
+    "end": 401.09,
+    "start_ts": "06:37",
+    "end_ts": "06:41",
+    "text": "On est en charge de récupérer cette donnée, l'ingérer depuis les systèmes sources,"
+  },
+  {
+    "id": 42,
+    "start": 406.03,
+    "end": 420.14,
+    "start_ts": "06:46",
+    "end_ts": "07:00",
+    "text": "Dans une architecture médaillon, on est passé à ça il n'y a pas si longtemps que ça donc on a un bon niveau de maturité sans être du tout en avance sur le marché."
+  },
+  {
+    "id": 43,
+    "start": 420.14,
+    "end": 428.14,
+    "start_ts": "07:00",
+    "end_ts": "07:08",
+    "text": "Je pense qu'on est bon sur notre secteur, on est à certains standards, on n'est pas forcément en avance d'un point de vue de tous les patterns design etc."
+  },
+  {
+    "id": 44,
+    "start": 428.14,
+    "end": 435.24,
+    "start_ts": "07:08",
+    "end_ts": "07:15",
+    "text": "Et ensuite on prend cette data, on la transforme, on l'analyse de façon soit ad hoc pour répondre à des questions."
+  },
+  {
+    "id": 45,
+    "start": 434.85,
+    "end": 473.1,
+    "start_ts": "07:15",
+    "end_ts": "07:53",
+    "text": "________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
+  },
+  {
+    "id": 46,
+    "start": 473.1,
+    "end": 477.26,
+    "start_ts": "07:53",
+    "end_ts": "07:57",
+    "text": "Confronté à ça parfois, attention quand on parle d'IAG, il y a un peu tout derrière."
+  },
+  {
+    "id": 47,
+    "start": 477.26,
+    "end": 483.99,
+    "start_ts": "07:57",
+    "end_ts": "08:04",
+    "text": "Moi je pense qu'il y a certains blocs, certains algos, certains modèles d'IAG qui nous manquent,"
+  },
+  {
+    "id": 48,
+    "start": 483.99,
+    "end": 491.88,
+    "start_ts": "08:04",
+    "end_ts": "08:12",
+    "text": "des choses pas forcément basiques, mais en tout cas sur des sujets clés tels que pricing ou recommandations sur le web par exemple,"
+  },
+  {
+    "id": 49,
+    "start": 491.88,
+    "end": 495.69,
+    "start_ts": "08:12",
+    "end_ts": "08:16",
+    "text": "qu'ils manquent, on aimerait bien pousser un peu plus."
+  },
+  {
+    "id": 50,
+    "start": 495.69,
+    "end": 500.76,
+    "start_ts": "08:16",
+    "end_ts": "08:21",
+    "text": "Bref, pour le contexte, on en a une grosse partie d'actifs."
+  },
+  {
+    "id": 51,
+    "start": 500.76,
+    "end": 505.59,
+    "start_ts": "08:21",
+    "end_ts": "08:26",
+    "text": "En tout cas, la data est beaucoup conforme de BI, il y a des rapports qu'on expose aux clients."
+  },
+  {
+    "id": 52,
+    "start": 505.94,
+    "end": 516.44,
+    "start_ts": "08:26",
+    "end_ts": "08:36",
+    "text": "On est une équipe transverse, donc on a des clients internes qui sont à la fois le marketing stratégique."
+  },
+  {
+    "id": 53,
+    "start": 516.44,
+    "end": 525.49,
+    "start_ts": "08:36",
+    "end_ts": "08:45",
+    "text": "T1 occupe de gérer son renouvellement et sa répartition dans les sites."
+  },
+  {
+    "id": 54,
+    "start": 525.49,
+    "end": 534.66,
+    "start_ts": "08:45",
+    "end_ts": "08:55",
+    "text": "Donc voilà, on a une diversité de clients internes assez importante, niveau de consommation de données, mais on adresse des problématiques assez différentes."
+  },
+  {
+    "id": 55,
+    "start": 534.66,
+    "end": 549.74,
+    "start_ts": "08:55",
+    "end_ts": "09:10",
+    "text": "Le sujet pour lequel on a besoin, c'est l'équipe, c'est le sujet de ce parti, la crise de revenu pour l'admission de prix."
+  },
+  {
+    "id": 56,
+    "start": 549.74,
+    "end": 555.34,
+    "start_ts": "09:10",
+    "end_ts": "09:15",
+    "text": "Donc on les change de façon dynamique dans la saison pour être au plus, voilà, pour jouer avec la demande."
+  },
+  {
+    "id": 57,
+    "start": 556.5,
+    "end": 574.89,
+    "start_ts": "09:16",
+    "end_ts": "09:35",
+    "text": "Et ce sujet là, quand on l'a commencé, on n'était pas mature, suffisamment mature pour, on a travaillé avec une boîte externe qui s'appelle ORTEC, un cabinet de conseil hollandais en mathématiques et logistique, je crois, au départ, et qui duvait à co-construire ce modèle de recrutement."
+  },
+  {
+    "id": 58,
+    "start": 574.89,
+    "end": 590.38,
+    "start_ts": "09:35",
+    "end_ts": "09:50",
+    "text": "Il y a tout un écosystème, l'étape suivante dans l'organisation, et donc on aimerait bien pouvoir challenger un petit peu plus ce modèle dont on n'est pas pleinement..."
+  },
+  {
+    "id": 59,
+    "start": 605.58,
+    "end": 608.51,
+    "start_ts": "10:06",
+    "end_ts": "10:09",
+    "text": "Ce qui n'est pas forcément le cas aujourd'hui."
+  },
+  {
+    "id": 60,
+    "start": 608.51,
+    "end": 615.34,
+    "start_ts": "10:09",
+    "end_ts": "10:15",
+    "text": "Donc le coeur de la mission sera vraiment sur l'analyse approfondie de ces données de pricing"
+  },
+  {
+    "id": 61,
+    "start": 615.34,
+    "end": 625.45,
+    "start_ts": "10:15",
+    "end_ts": "10:25",
+    "text": "mais sous un angle quand même assez large, c'est-à-dire à la fois challenger l'élève qui est utilisée,"
+  },
+  {
+    "id": 62,
+    "start": 625.45,
+    "end": 631.65,
+    "start_ts": "10:25",
+    "end_ts": "10:32",
+    "text": "les décisions qu'on a prises dans le passé ont-elles été les bonnes ?"
+  },
+  {
+    "id": 63,
+    "start": 631.65,
+    "end": 635.65,
+    "start_ts": "10:32",
+    "end_ts": "10:36",
+    "text": "Donc faire un petit peu d'analyse rétrospective et ça c'est pas simple sur les problèmes de prix."
+  },
+  {
+    "id": 64,
+    "start": 635.65,
+    "end": 644.57,
+    "start_ts": "10:36",
+    "end_ts": "10:45",
+    "text": "Et puis peut-être même, ce sera plutôt en deuxième étape, comprendre est-ce que le mode est en place."
+  },
+  {
+    "id": 65,
+    "start": 644.53,
+    "end": 652.01,
+    "start_ts": "10:45",
+    "end_ts": "10:52",
+    "text": "Functionne aussi bien qu'il devait être capable de proposer quelque chose qui vient challenger ses recommandations et s'y est mis pour quoi, voilà, vraiment."
+  },
+  {
+    "id": 66,
+    "start": 652.01,
+    "end": 677.8,
+    "start_ts": "10:52",
+    "end_ts": "11:18",
+    "text": "Avoir un peu un contrepoids aux partenaires, d'activer au début de Data Engineer, Scientist Analyst, on a aussi nos petites routes qui pipeline à maintenir,"
+  },
+  {
+    "id": 67,
+    "start": 677.8,
+    "end": 692.93,
+    "start_ts": "11:18",
+    "end_ts": "11:33",
+    "text": "donc je pense que l'activité est naturellement pas que centrée sur la partie Data Science, Data Analyse, mais ceci dit, voilà, je pense que ça doit rester 80% de rester sur ce sujet assez profond."
+  },
+  {
+    "id": 68,
+    "start": 693.02,
+    "end": 699.42,
+    "start_ts": "11:33",
+    "end_ts": "11:39",
+    "text": "Et après, il y a toujours des échanges transverses avec Data Engineer, Data Scientist, Data Analyse d'autres équipes."
+  },
+  {
+    "id": 69,
+    "start": 699.42,
+    "end": 711.3,
+    "start_ts": "11:39",
+    "end_ts": "11:51",
+    "text": "On se projette vraiment dans le temps parce qu'on parle d'un CDI, une fois qu'on a acquis de la maturité sur ce sujet et qu'on a réussi à tirer des conclusions de toutes ces analyses"
+  },
+  {
+    "id": 70,
+    "start": 711.3,
+    "end": 717.3,
+    "start_ts": "11:51",
+    "end_ts": "11:57",
+    "text": "et d'avoir éventuellement un modèle qui tourne et qui challenge les recommandations de prix, quand il y a peut-être moins de temps à passer là-dessus,"
+  },
+  {
+    "id": 71,
+    "start": 717.3,
+    "end": 720.46,
+    "start_ts": "11:57",
+    "end_ts": "12:00",
+    "text": "il y a plein d'autres sujets qui nous attendent sur la partie Data Science."
+  },
+  {
+    "id": 72,
+    "start": 720.46,
+    "end": 724.32,
+    "start_ts": "12:00",
+    "end_ts": "12:04",
+    "text": "Et ça, là, je me projette déjà un peu loin."
+  },
+  {
+    "id": 73,
+    "start": 728.75,
+    "end": 733.42,
+    "start_ts": "12:09",
+    "end_ts": "12:13",
+    "text": "Du cadre et de la mission, c'est déjà clair ?"
+  },
+  {
+    "id": 74,
+    "start": 733.42,
+    "end": 739.42,
+    "start_ts": "12:13",
+    "end_ts": "12:19",
+    "text": "On va riper sur le tu."
+  },
+  {
+    "id": 75,
+    "start": 739.42,
+    "end": 742.42,
+    "start_ts": "12:19",
+    "end_ts": "12:22",
+    "text": "Ouais, super clair."
+  },
+  {
+    "id": 76,
+    "start": 742.42,
+    "end": 744.9,
+    "start_ts": "12:22",
+    "end_ts": "12:25",
+    "text": "Ouais, j'ai des questions."
+  },
+  {
+    "id": 77,
+    "start": 744.9,
+    "end": 746.9,
+    "start_ts": "12:25",
+    "end_ts": "12:27",
+    "text": "Est-ce que c'est pour tous les pays ?"
+  },
+  {
+    "id": 78,
+    "start": 746.9,
+    "end": 752.9,
+    "start_ts": "12:27",
+    "end_ts": "12:33",
+    "text": "Parce que j'ai vu que le groupe était implanté dans différents pays,"
+  },
+  {
+    "id": 79,
+    "start": 752.9,
+    "end": 759.13,
+    "start_ts": "12:33",
+    "end_ts": "12:39",
+    "text": "où il y a eu des modifications de TVA récemment."
+  },
+  {
+    "id": 80,
+    "start": 759.57,
+    "end": 769.79,
+    "start_ts": "12:40",
+    "end_ts": "12:50",
+    "text": "Est-ce que ça concerne tous les pays, uniquement les sites détenus en propres ou les autres sites partenaires ?"
+  },
+  {
+    "id": 81,
+    "start": 769.79,
+    "end": 774.81,
+    "start_ts": "12:50",
+    "end_ts": "12:55",
+    "text": "C'est une très bonne question. Ça concerne tous les pays."
+  },
+  {
+    "id": 82,
+    "start": 774.81,
+    "end": 787.69,
+    "start_ts": "12:55",
+    "end_ts": "13:08",
+    "text": "En Espagne, je pense que c'est les Hollandais."
+  },
+  {
+    "id": 83,
+    "start": 787.69,
+    "end": 806.45,
+    "start_ts": "13:08",
+    "end_ts": "13:26",
+    "text": "En effet, on a quatre crédits de prix cités et les prix s'effectuent pour tout."
+  },
+  {
+    "id": 84,
+    "start": 806.45,
+    "end": 812.23,
+    "start_ts": "13:26",
+    "end_ts": "13:32",
+    "text": "C'est également le cas pour sites en propres et sites partenaires."
+  },
+  {
+    "id": 85,
+    "start": 812.23,
+    "end": 824.78,
+    "start_ts": "13:32",
+    "end_ts": "13:45",
+    "text": "Alors en fait, je pense au niveau dans le sens où tout le détail, le site en propres et le site partenaires,"
+  },
+  {
+    "id": 86,
+    "start": 831.57,
+    "end": 840.7,
+    "start_ts": "13:52",
+    "end_ts": "14:01",
+    "text": "Les dépenses F&B?"
+  },
+  {
+    "id": 87,
+    "start": 840.7,
+    "end": 849.06,
+    "start_ts": "14:01",
+    "end_ts": "14:09",
+    "text": "On se parle sur si on n'est pas encore de yield, sur la partie F&B par exemple."
+  },
+  {
+    "id": 88,
+    "start": 849.06,
+    "end": 860.63,
+    "start_ts": "14:09",
+    "end_ts": "14:21",
+    "text": "En effet, s'il arrive chez nous, donc tout ce qui va être l'offre, par exemple d'avoir des chiens, c'est un supplément, voilà ce genre de truc."
+  },
+  {
+    "id": 89,
+    "start": 860.63,
+    "end": 886.6,
+    "start_ts": "14:21",
+    "end_ts": "14:47",
+    "text": "Bon ça va, ça va, book pour la saison, sur lesquels on va mettre par exemple des portes sur ce camping-là."
+  },
+  {
+    "id": 90,
+    "start": 886.6,
+    "end": 894.24,
+    "start_ts": "14:47",
+    "end_ts": "14:54",
+    "text": "Ce garant, on va dire, du niveau de prestation qu'on a sur le client."
+  },
+  {
+    "id": 91,
+    "start": 894.24,
+    "end": 899.53,
+    "start_ts": "14:54",
+    "end_ts": "15:00",
+    "text": "Si c'est trop froid, ça sert à rien de venir me dire à nous. Malheureusement, on aura pas la main dessus."
+  },
+  {
+    "id": 92,
+    "start": 899.53,
+    "end": 905.02,
+    "start_ts": "15:00",
+    "end_ts": "15:05",
+    "text": "D'accord."
+  },
+  {
+    "id": 93,
+    "start": 904.56,
+    "end": 907.56,
+    "start_ts": "15:05",
+    "end_ts": "15:08",
+    "text": "En fonction de ce que tu viens de dire, j'en ai dû deux choses."
+  },
+  {
+    "id": 94,
+    "start": 907.56,
+    "end": 911.56,
+    "start_ts": "15:08",
+    "end_ts": "15:12",
+    "text": "La première, c'est que sur les sites gérés en propres,"
+  },
+  {
+    "id": 95,
+    "start": 911.56,
+    "end": 914.56,
+    "start_ts": "15:12",
+    "end_ts": "15:15",
+    "text": "il y aura peut-être, ou il y a sans doute déjà,"
+  },
+  {
+    "id": 96,
+    "start": 914.56,
+    "end": 924.73,
+    "start_ts": "15:15",
+    "end_ts": "15:25",
+    "text": "une analyse des points de friction clients."
+  },
+  {
+    "id": 97,
+    "start": 924.73,
+    "end": 929.46,
+    "start_ts": "15:25",
+    "end_ts": "15:29",
+    "text": "On essaie de l'exploiter au mieux pour comprendre"
+  },
+  {
+    "id": 98,
+    "start": 929.46,
+    "end": 933.46,
+    "start_ts": "15:29",
+    "end_ts": "15:33",
+    "text": "quels sont les plus et les moins cités par les clients."
+  },
+  {
+    "id": 99,
+    "start": 934.77,
+    "end": 953.77,
+    "start_ts": "15:35",
+    "end_ts": "15:54",
+    "text": "J'ai entendu parler de BigQuery, est-ce que ça veut dire aussi qu'aujourd'hui vous disposez des Google Trends et des prévisions de demandes par marché fournies par Google ou pas encore ?"
+  },
+  {
+    "id": 100,
+    "start": 953.77,
+    "end": 960.44,
+    "start_ts": "15:54",
+    "end_ts": "16:00",
+    "text": "Alors ça c'est une excellente question, je ne saurais pas répondre honnêtement. Je pense que le côté data on ne l'exploite pas."
+  },
+  {
+    "id": 101,
+    "start": 965.54,
+    "end": 991.04,
+    "start_ts": "16:06",
+    "end_ts": "16:31",
+    "text": "__________________________________________________________________________________________________________"
+  },
+  {
+    "id": 102,
+    "start": 992.56,
+    "end": 997.56,
+    "start_ts": "16:33",
+    "end_ts": "16:38",
+    "text": "Il y a des pics de saisonnalité hyper fort, forcément au moment des vacances classiques."
+  },
+  {
+    "id": 103,
+    "start": 997.56,
+    "end": 1001.56,
+    "start_ts": "16:38",
+    "end_ts": "16:42",
+    "text": "Mais il y a aussi un débordement sur les ailes de début et fin de saison."
+  },
+  {
+    "id": 104,
+    "start": 1001.56,
+    "end": 1008.87,
+    "start_ts": "16:42",
+    "end_ts": "16:49",
+    "text": "Je pense qu'avec toute cette période de canicule qu'on a enregistrée cette année,"
+  },
+  {
+    "id": 105,
+    "start": 1008.87,
+    "end": 1017.06,
+    "start_ts": "16:49",
+    "end_ts": "16:57",
+    "text": "ou d'incendie dans les campings, on doit avoir une extension de l'activité sur septembre, octobre et méjon."
+  },
+  {
+    "id": 106,
+    "start": 1024.72,
+    "end": 1030.72,
+    "start_ts": "17:05",
+    "end_ts": "17:11",
+    "text": "Un chiffre de géographie. La côte d'Azur en plein été, ce n'est pas aussi bien que ça pourrait être."
+  },
+  {
+    "id": 107,
+    "start": 1030.72,
+    "end": 1034.72,
+    "start_ts": "17:11",
+    "end_ts": "17:15",
+    "text": "Il y a plus un chiffre, c'est-à-dire la destination, le fameux location."
+  },
+  {
+    "id": 108,
+    "start": 1034.72,
+    "end": 1044.37,
+    "start_ts": "17:15",
+    "end_ts": "17:24",
+    "text": "En tout cas, on va observer cette année, voir si c'est les tendances qui se maintiennent."
+  },
+  {
+    "id": 109,
+    "start": 1044.37,
+    "end": 1054.14,
+    "start_ts": "17:24",
+    "end_ts": "17:34",
+    "text": "Une autre question, mais par pure curiosité, parce que je ne te cache pas que j'ai un peu préparé notre échange."
+  },
+  {
+    "id": 110,
+    "start": 1056.11,
+    "end": 1065.62,
+    "start_ts": "17:36",
+    "end_ts": "17:46",
+    "text": "J'adore BeMAD et j'adore réfléchir avec BeMAD, notamment sur les brainstorming pour essayer d'imaginer et mieux comprendre."
+  },
+  {
+    "id": 111,
+    "start": 1065.62,
+    "end": 1070.62,
+    "start_ts": "17:46",
+    "end_ts": "17:51",
+    "text": "C'est quand même une preuve minimale de respect d'arrivée préparée."
+  },
+  {
+    "id": 112,
+    "start": 1070.62,
+    "end": 1083.62,
+    "start_ts": "17:51",
+    "end_ts": "18:04",
+    "text": "Est-ce qu'on a la traçabilité des décisions prises qui avaient été recommandées par rapport à..."
+  },
+  {
+    "id": 113,
+    "start": 1083.73,
+    "end": 1087.73,
+    "start_ts": "18:04",
+    "end_ts": "18:08",
+    "text": "Quelle part de décisions prix recommandées n'ont pas été appliquées ?"
+  },
+  {
+    "id": 114,
+    "start": 1087.73,
+    "end": 1090.88,
+    "start_ts": "18:08",
+    "end_ts": "18:11",
+    "text": "Est-ce qu'on a la traçabilité ?"
+  },
+  {
+    "id": 115,
+    "start": 1090.88,
+    "end": 1092.88,
+    "start_ts": "18:11",
+    "end_ts": "18:13",
+    "text": "Tout à fait, c'est une bonne question."
+  },
+  {
+    "id": 116,
+    "start": 1092.88,
+    "end": 1095.14,
+    "start_ts": "18:13",
+    "end_ts": "18:15",
+    "text": "C'est vraiment le cœur de la donnée qui va t'intéresser,"
+  },
+  {
+    "id": 117,
+    "start": 1095.14,
+    "end": 1097.81,
+    "start_ts": "18:15",
+    "end_ts": "18:18",
+    "text": "je pense, pendant cette fameuse analyse rétrospective."
+  },
+  {
+    "id": 118,
+    "start": 1097.81,
+    "end": 1114.66,
+    "start_ts": "18:18",
+    "end_ts": "18:35",
+    "text": "On a logué tout ça, on peut savoir"
+  },
+  {
+    "id": 119,
+    "start": 1114.66,
+    "end": 1122.74,
+    "start_ts": "18:35",
+    "end_ts": "18:43",
+    "text": "est-ce que le prix décision complètement de baisser"
+  },
+  {
+    "id": 120,
+    "start": 1122.74,
+    "end": 1125.73,
+    "start_ts": "18:43",
+    "end_ts": "18:46",
+    "text": "quand on en est au vis-à-vis de ça."
+  },
+  {
+    "id": 121,
+    "start": 1125.73,
+    "end": 1128.43,
+    "start_ts": "18:46",
+    "end_ts": "18:48",
+    "text": "Donc tout ça on l'a."
+  },
+  {
+    "id": 122,
+    "start": 1128.43,
+    "end": 1136.46,
+    "start_ts": "18:48",
+    "end_ts": "18:56",
+    "text": "Price point, définir tous les points de prix"
+  },
+  {
+    "id": 123,
+    "start": 1136.46,
+    "end": 1138.46,
+    "start_ts": "18:56",
+    "end_ts": "18:58",
+    "text": "qu'on peut céter sur la saison."
+  },
+  {
+    "id": 124,
+    "start": 1138.46,
+    "end": 1141.68,
+    "start_ts": "18:58",
+    "end_ts": "19:02",
+    "text": "Et bien en fait, on price au produit,"
+  },
+  {
+    "id": 125,
+    "start": 1142.8,
+    "end": 1172.58,
+    "start_ts": "19:03",
+    "end_ts": "19:33",
+    "text": "Et d'un point de vue légal, ça se passe comment ?"
+  },
+  {
+    "id": 126,
+    "start": 1172.58,
+    "end": 1188.72,
+    "start_ts": "19:33",
+    "end_ts": "19:49",
+    "text": "Il n'y a pas des règles de discount ou d'augmentation qu'on a le droit d'appliquer ou pas d'un point"
+  },
+  {
+    "id": 127,
+    "start": 1204.62,
+    "end": 1216.38,
+    "start_ts": "20:05",
+    "end_ts": "20:16",
+    "text": "Comme étant une promotion de 20% versus le prix barré, il faut que ce prix barré ait pu être constaté comme étant le réel prix de vente sur les 30 derniers jours."
+  },
+  {
+    "id": 128,
+    "start": 1216.38,
+    "end": 1217.86,
+    "start_ts": "20:16",
+    "end_ts": "20:18",
+    "text": "D'accord."
+  },
+  {
+    "id": 129,
+    "start": 1217.86,
+    "end": 1222.86,
+    "start_ts": "20:18",
+    "end_ts": "20:23",
+    "text": "On ne peut pas juste se faire plaisir pour dire que normalement c'était 1500 euros alors qu'on n'a jamais vendu ce truc."
+  },
+  {
+    "id": 130,
+    "start": 1222.86,
+    "end": 1226.41,
+    "start_ts": "20:23",
+    "end_ts": "20:26",
+    "text": "Voilà, ça semble raisonnable tout simplement."
+  },
+  {
+    "id": 131,
+    "start": 1226.41,
+    "end": 1237.43,
+    "start_ts": "20:26",
+    "end_ts": "20:37",
+    "text": "Et l'autre contrainte qui peut nous embêter sur le sujet du pricing, c'est qu'il est légalement impossible de proposer deux prix différents pour exactement le même produit à deux clients."
+  },
+  {
+    "id": 132,
+    "start": 1238.96,
+    "end": 1248.04,
+    "start_ts": "20:39",
+    "end_ts": "20:48",
+    "text": "Donc ça, ça va nous embêter et je te laisse deviner où."
+  },
+  {
+    "id": 133,
+    "start": 1248.04,
+    "end": 1251.16,
+    "start_ts": "20:48",
+    "end_ts": "20:51",
+    "text": "Le comité d'entreprise ?"
+  },
+  {
+    "id": 134,
+    "start": 1251.16,
+    "end": 1256.25,
+    "start_ts": "20:51",
+    "end_ts": "20:56",
+    "text": "Le comité d'entreprise, pourquoi tu le mets en mettant à ce niveau-là ?"
+  },
+  {
+    "id": 135,
+    "start": 1256.25,
+    "end": 1264.88,
+    "start_ts": "20:56",
+    "end_ts": "21:05",
+    "text": "Bah, peut-être pas les mêmes règles suivent."
+  },
+  {
+    "id": 136,
+    "start": 1264.88,
+    "end": 1267.98,
+    "start_ts": "21:05",
+    "end_ts": "21:08",
+    "text": "Remarque, comment est-ce qu'un comité d'entreprise peut savoir"
+  },
+  {
+    "id": 137,
+    "start": 1267.98,
+    "end": 1274.29,
+    "start_ts": "21:08",
+    "end_ts": "21:14",
+    "text": "qu'un autre comité d'entreprise bénéficie d'une ristourne plus importante."
+  },
+  {
+    "id": 138,
+    "start": 1274.29,
+    "end": 1276.27,
+    "start_ts": "21:14",
+    "end_ts": "21:16",
+    "text": "Je sais pas."
+  },
+  {
+    "id": 139,
+    "start": 1276.27,
+    "end": 1281.81,
+    "start_ts": "21:16",
+    "end_ts": "21:22",
+    "text": "Sur la partie B2B, ça pourrait, mais..."
+  },
+  {
+    "id": 140,
+    "start": 1282.9,
+    "end": 1296.4,
+    "start_ts": "21:23",
+    "end_ts": "21:36",
+    "text": "Dans un point de vue méthode, on va dire data, etc., dans quel cadre on aurait envie de se dire, on propose deux prix, dix sur le même produit ?"
+  },
+  {
+    "id": 141,
+    "start": 1296.4,
+    "end": 1323.6,
+    "start_ts": "21:36",
+    "end_ts": "22:04",
+    "text": "Suivant l'origine géographique du client. Parce que si la TVA est de 21% en Netherland alors qu'elle est que de je sais pas combien en France, si..."
+  },
+  {
+    "id": 142,
+    "start": 1324.4,
+    "end": 1330.4,
+    "start_ts": "22:04",
+    "end_ts": "22:10",
+    "text": "J'ai pas vérifié si c'est 11% ou je sais plus."
+  },
+  {
+    "id": 143,
+    "start": 1330.4,
+    "end": 1345.97,
+    "start_ts": "22:10",
+    "end_ts": "22:26",
+    "text": "Je crois que c'est 20% aussi."
+  },
+  {
+    "id": 144,
+    "start": 1345.97,
+    "end": 1354.97,
+    "start_ts": "22:26",
+    "end_ts": "22:35",
+    "text": "A voir si il effectue la recherche avec un VPN sur un site en France ou sans VPN."
+  },
+  {
+    "id": 145,
+    "start": 1354.97,
+    "end": 1374.93,
+    "start_ts": "22:35",
+    "end_ts": "22:55",
+    "text": "Non mais ça c'est une question qu'on se pose."
+  },
+  {
+    "id": 146,
+    "start": 1374.93,
+    "end": 1390.7,
+    "start_ts": "22:55",
+    "end_ts": "23:11",
+    "text": "Ça pourrait être du drift, on a compris que c'était moins cher."
+  },
+  {
+    "id": 147,
+    "start": 1390.7,
+    "end": 1392.7,
+    "start_ts": "23:11",
+    "end_ts": "23:13",
+    "text": "On va voir des sites en Pologne."
+  },
+  {
+    "id": 148,
+    "start": 1398.03,
+    "end": 1402.06,
+    "start_ts": "23:18",
+    "end_ts": "23:22",
+    "text": "La partie où je voulais plus t'emmener, c'était sur la partie test A-B."
+  },
+  {
+    "id": 149,
+    "start": 1402.06,
+    "end": 1407.6,
+    "start_ts": "23:22",
+    "end_ts": "23:28",
+    "text": "As-tu déjà fait ça dans tes expériences précédentes ?"
+  },
+  {
+    "id": 150,
+    "start": 1407.6,
+    "end": 1413.6,
+    "start_ts": "23:28",
+    "end_ts": "23:34",
+    "text": "Vu que je n'ai pas directement prédit des prix, mais j'ai prédit des niveaux d'activité."
+  },
+  {
+    "id": 151,
+    "start": 1413.6,
+    "end": 1427.25,
+    "start_ts": "23:34",
+    "end_ts": "23:47",
+    "text": "Mais c'est quel hold-out on garde pour effectuer une comparaison."
+  },
+  {
+    "id": 152,
+    "start": 1433.07,
+    "end": 1437.75,
+    "start_ts": "23:53",
+    "end_ts": "23:58",
+    "text": "Si on teste des hypothèses sur un nouveau modèle, on ne va pas le faire sur tous les sites,"
+  },
+  {
+    "id": 153,
+    "start": 1437.75,
+    "end": 1448.46,
+    "start_ts": "23:58",
+    "end_ts": "24:08",
+    "text": "on va le faire sur une dizaine ou une quinzaine de sites partenaires où s'intéressent les mecs"
+  },
+  {
+    "id": 154,
+    "start": 1448.46,
+    "end": 1454.9,
+    "start_ts": "24:08",
+    "end_ts": "24:15",
+    "text": "pour ne pas qu'ils dégomment à la main toutes les préconisations qu'on peut faire."
+  },
+  {
+    "id": 155,
+    "start": 1454.9,
+    "end": 1458.54,
+    "start_ts": "24:15",
+    "end_ts": "24:19",
+    "text": "Alors, c'est plein de choses intéressantes."
+  },
+  {
+    "id": 156,
+    "start": 1458.54,
+    "end": 1465.06,
+    "start_ts": "24:19",
+    "end_ts": "24:25",
+    "text": "En effet, le test A-B, l'idée, enfin, en fait, l'origine de la question, c'est celle-ci."
+  },
+  {
+    "id": 157,
+    "start": 1465.06,
+    "end": 1466.06,
+    "start_ts": "24:25",
+    "end_ts": "24:26",
+    "text": "On a un modèle."
+  },
+  {
+    "id": 158,
+    "start": 1466.14,
+    "end": 1473.06,
+    "start_ts": "24:26",
+    "end_ts": "24:33",
+    "text": "On a un modèle baseline qui nous fait de la recommandation de prix qui est en prod actuellement."
+  },
+  {
+    "id": 159,
+    "start": 1473.06,
+    "end": 1477.54,
+    "start_ts": "24:33",
+    "end_ts": "24:38",
+    "text": "On continue de bosser dessus et puis on a une V2 qu'on suppose être meilleure."
+  },
+  {
+    "id": 160,
+    "start": 1477.54,
+    "end": 1482.78,
+    "start_ts": "24:38",
+    "end_ts": "24:43",
+    "text": "Et la question c'est comment, est-ce qu'on se convainc qu'elle est meilleure ?"
+  },
+  {
+    "id": 161,
+    "start": 1482.78,
+    "end": 1490.85,
+    "start_ts": "24:43",
+    "end_ts": "24:51",
+    "text": "Du coup tu as mentionné la partie YAMO, c'est-à-dire qu'on a réussi à mettre en place un cadre suffisamment rumieux de simulation."
+  },
+  {
+    "id": 162,
+    "start": 1490.85,
+    "end": 1496.85,
+    "start_ts": "24:51",
+    "end_ts": "24:57",
+    "text": "Du coup on peut se dire sur des catéries un peu théoriques, ok notre modèle V2 il a l'air quand même d'apporter de la performance."
+  },
+  {
+    "id": 163,
+    "start": 1496.85,
+    "end": 1501.32,
+    "start_ts": "24:57",
+    "end_ts": "25:01",
+    "text": "Maintenant on a envie de le tester en prod et s'assurer que c'est le cas."
+  },
+  {
+    "id": 164,
+    "start": 1502.19,
+    "end": 1513.69,
+    "start_ts": "25:02",
+    "end_ts": "25:14",
+    "text": "Le test A-B, c'est souvent comme super outil, c'est-à-dire qu'on envoie une sous-partie de notre population relativement faible et suffisamment pour que statistiquement ça tienne la route."
+  },
+  {
+    "id": 165,
+    "start": 1513.69,
+    "end": 1517.94,
+    "start_ts": "25:14",
+    "end_ts": "25:18",
+    "text": "Donc on prend pas trop de risques et on arrive à mesurer parce qu'on a beaucoup de volume."
+  },
+  {
+    "id": 166,
+    "start": 1517.94,
+    "end": 1525.22,
+    "start_ts": "25:18",
+    "end_ts": "25:25",
+    "text": "Là, comme on n'a pas le droit de faire en sorte que deux clients voient les mêmes choses au même prix, le test A-B, c'est bon. Donc c'est embêtant."
+  },
+  {
+    "id": 167,
+    "start": 1525.22,
+    "end": 1540.22,
+    "start_ts": "25:25",
+    "end_ts": "25:40",
+    "text": "Une stratégie qu'on pourrait dépenser pour essayer de se convaincre malgré tout et de faire un test le plus pertinent possible pour se dire que le modèle 2, en effet, il a l'air d'être meilleur que le modèle 1."
+  },
+  {
+    "id": 168,
+    "start": 1540.74,
+    "end": 1549.62,
+    "start_ts": "25:41",
+    "end_ts": "25:50",
+    "text": "J'imagine qu'on doit avoir une équivalence des campings."
+  },
+  {
+    "id": 169,
+    "start": 1549.62,
+    "end": 1561.98,
+    "start_ts": "25:50",
+    "end_ts": "26:02",
+    "text": "Tu dois avoir des sites qui sont équivalents en termes de prix, prestations, localisation et météo."
+  },
+  {
+    "id": 170,
+    "start": 1561.98,
+    "end": 1568.6,
+    "start_ts": "26:02",
+    "end_ts": "26:09",
+    "text": "Et justement tu splits en fonction de ces sites-là."
+  },
+  {
+    "id": 171,
+    "start": 1568.6,
+    "end": 1575.68,
+    "start_ts": "26:09",
+    "end_ts": "26:16",
+    "text": "Parce qu'il y a la règle de l'emplacement, l'emplacement, l'emplacement, donc à la limite tu peux presque justifier que..."
+  },
+  {
+    "id": 172,
+    "start": 1576.27,
+    "end": 1579.67,
+    "start_ts": "26:16",
+    "end_ts": "26:20",
+    "text": "En fonction de cette localisation-là, tu peux appliquer ce prix-là."
+  },
+  {
+    "id": 173,
+    "start": 1579.67,
+    "end": 1601.66,
+    "start_ts": "26:20",
+    "end_ts": "26:42",
+    "text": "On a pas encore pensé, mais je pense que c'est une bonne idée de tester de cette façon-là."
+  },
+  {
+    "id": 174,
+    "start": 1601.66,
+    "end": 1606.54,
+    "start_ts": "26:42",
+    "end_ts": "26:47",
+    "text": "C'est-à-dire de clusteriser nos campings quelque part en fonction d'un certain nombre de features,"
+  },
+  {
+    "id": 175,
+    "start": 1606.54,
+    "end": 1609.14,
+    "start_ts": "26:47",
+    "end_ts": "26:49",
+    "text": "pour se dire qu'on a des campings qui se comportent de façon similaire,"
+  },
+  {
+    "id": 176,
+    "start": 1609.14,
+    "end": 1614.07,
+    "start_ts": "26:49",
+    "end_ts": "26:54",
+    "text": "et puis de tester sur l'un d'entre eux des prix A et sur l'autre des prix B, et puis voir lequel..."
+  },
+  {
+    "id": 177,
+    "start": 1614.38,
+    "end": 1639.67,
+    "start_ts": "26:54",
+    "end_ts": "27:20",
+    "text": "Et puis tu rajoutes aussi, alors pas forcément la météo parce que si les réservations sont faites plus de trois mois à l'avance avec un prix plus élevé, mais peut-être le niveau de prix à prestations comparables chez un concurrent à moins d'un kilomètre."
+  },
+  {
+    "id": 178,
+    "start": 1640.34,
+    "end": 1658.08,
+    "start_ts": "27:20",
+    "end_ts": "27:38",
+    "text": "Plus le volume de recherche sur Google sur cette destination-là, tu imputes est-ce qu'il y a des jours ferrés ou pas, peut-être le coût de l'essence."
+  },
+  {
+    "id": 179,
+    "start": 1658.08,
+    "end": 1690.06,
+    "start_ts": "27:38",
+    "end_ts": "28:10",
+    "text": "Non mais c'est super, tout repose, simple, c'est offres et demandes et licités au niveau du prix, ça c'est, mais l'estimation de ces paramètres-là est hyper importante et la demande va dépendre énormément en effet de tous ces facteurs un peu exogènes."
+  },
+  {
+    "id": 180,
+    "start": 1690.42,
+    "end": 1699.9,
+    "start_ts": "28:10",
+    "end_ts": "28:20",
+    "text": "Et de même pour l'élasticité, c'est important de la comprendre bien, donc je pense que c'est les features qu'on aurait envie de mettre dans l'étude, c'est clair."
+  },
+  {
+    "id": 181,
+    "start": 1699.9,
+    "end": 1718.98,
+    "start_ts": "28:20",
+    "end_ts": "28:39",
+    "text": "Ouais. Et Noélie me disait, il va te parler de Random Forest ou de XGBoost, et moi j'ai envie de dire, et Prophet, tu l'as utilisé ou pas ?"
+  },
+  {
+    "id": 182,
+    "start": 1718.98,
+    "end": 1719.98,
+    "start_ts": "28:39",
+    "end_ts": "28:40",
+    "text": "Oups."
+  },
+  {
+    "id": 183,
+    "start": 1719.98,
+    "end": 1734.07,
+    "start_ts": "28:40",
+    "end_ts": "28:54",
+    "text": "Ouais, non c'est une bonne question."
+  },
+  {
+    "id": 184,
+    "start": 1735.82,
+    "end": 1742.82,
+    "start_ts": "28:56",
+    "end_ts": "29:03",
+    "text": "Pourquoi Prophet ? Parce que, modèle hyper léger, hyper rapide, tu peux ajouter autant de régresseurs que tu veux."
+  },
+  {
+    "id": 185,
+    "start": 1745.86,
+    "end": 1748.86,
+    "start_ts": "29:06",
+    "end_ts": "29:09",
+    "text": "A inconvénient, tu dois faire des prévisions sur tes régresseurs."
+  },
+  {
+    "id": 186,
+    "start": 1750.86,
+    "end": 1756.86,
+    "start_ts": "29:11",
+    "end_ts": "29:17",
+    "text": "Avec des volumes de recherche Google, c'est tout nickel parce qu'ils te donnent des prévisions à court ou moyen terme."
+  },
+  {
+    "id": 187,
+    "start": 1758.56,
+    "end": 1765.23,
+    "start_ts": "29:19",
+    "end_ts": "29:25",
+    "text": "Prévision météo, ça me paraît difficile."
+  },
+  {
+    "id": 188,
+    "start": 1767.34,
+    "end": 1781.41,
+    "start_ts": "29:27",
+    "end_ts": "29:41",
+    "text": "Mais moi, quand j'avais testé l'implémentation de ça chez Interflora, finalement, un Prophète était meilleur qu'un XGBoost et moi ce qui compte, pour moi ce qui compte c'est la mesure de l'erreur."
+  },
+  {
+    "id": 189,
+    "start": 1785.79,
+    "end": 1791.79,
+    "start_ts": "29:46",
+    "end_ts": "29:52",
+    "text": "Et j'avais mesuré l'erreur en fonction de quel récréseur et pourquoi."
+  },
+  {
+    "id": 190,
+    "start": 1792.91,
+    "end": 1810.98,
+    "start_ts": "29:53",
+    "end_ts": "30:11",
+    "text": "Du moins, si je rajoute 1, 2, 3, quelles combinaisons, desquelles, et au final, finalement, juste les jours fériés, les volumes de recherche, et l'imputation des jours fériés avant et après, ça faisait largement la blague."
+  },
+  {
+    "id": 191,
+    "start": 1826.7,
+    "end": 1838.44,
+    "start_ts": "30:27",
+    "end_ts": "30:38",
+    "text": "Enfin, ça y ressemble mais c'est plus classique, en tout cas on a commencé par la prévision de demandes, la vitesse de pick-up récent,"
+  },
+  {
+    "id": 192,
+    "start": 1838.44,
+    "end": 1847.94,
+    "start_ts": "30:38",
+    "end_ts": "30:48",
+    "text": "la notion de dynamique de marché, etc. mais on n'a jamais, et je pense qu'on n'utilise pas assez, la notion de time série, de saisonnalité au sein de nos cours d'achat."
+  },
+  {
+    "id": 193,
+    "start": 1847.94,
+    "end": 1855.9,
+    "start_ts": "30:48",
+    "end_ts": "30:56",
+    "text": "Et ce serait vachement intéressant à essayer parce qu'on remarque d'ailleurs que la trend change beaucoup."
+  },
+  {
+    "id": 194,
+    "start": 1855.9,
+    "end": 1862.6,
+    "start_ts": "30:56",
+    "end_ts": "31:03",
+    "text": "C'est-à-dire que le comportement d'achat de nos utilisateurs sur les trois dernières années, il a quand même vachement de drift."
+  },
+  {
+    "id": 195,
+    "start": 1869.2,
+    "end": 1910.88,
+    "start_ts": "31:09",
+    "end_ts": "31:51",
+    "text": "La question initiale qui était posée, c'est est-ce qu'on va vers une dégradation de la demande qui est intrinsèque, une tendance ?"
+  },
+  {
+    "id": 196,
+    "start": 1910.98,
+    "end": 1913.98,
+    "start_ts": "31:51",
+    "end_ts": "31:54",
+    "text": "L'utilité concrète et directe, c'était finalement..."
+  },
+  {
+    "id": 197,
+    "start": 1942.51,
+    "end": 1960.3,
+    "start_ts": "32:23",
+    "end_ts": "32:40",
+    "text": "Pour le service client, qui, sur les pics d'activité, avait besoin de pouvoir cuber le nombre de personnes en call center pour absorber les insatisfactions."
+  },
+  {
+    "id": 198,
+    "start": 1960.3,
+    "end": 1972.81,
+    "start_ts": "32:40",
+    "end_ts": "32:53",
+    "text": "Donc avoir à court et moyen terme une estimation du volume de bouquets qui allait être vendu, ça permettait de dimensionner les mecs."
+  },
+  {
+    "id": 199,
+    "start": 1988.14,
+    "end": 1998.81,
+    "start_ts": "33:08",
+    "end_ts": "33:19",
+    "text": "On a ces sujets nous aussi, on a un call center, et on a ces sujets de pick de charge sur les call centers."
+  },
+  {
+    "id": 200,
+    "start": 1998.81,
+    "end": 2014.35,
+    "start_ts": "33:19",
+    "end_ts": "33:34",
+    "text": "Pour l'instant, on les a adressés à cette prédiction et d'avoir la flexibilité, mais c'est un manque."
+  }
+]

@@ -1,0 +1,200 @@
+[00:00 -> 00:12] En fait tu sais quand je t'ai dis que c'est un test technique qui t'envoie à faire quand tu peux et après des briefings avec une équipe technique pour savoir...
+[00:12 -> 00:22] Tu veux dire que le jour de l'anniversaire de ma fille, alors qu'elle revient de Paris, que ça va faire trois semaines que je ne l'ai pas vu...
+[00:22 -> 00:25] Oh non mais après sinon, la début de semaine prochaine ?
+[00:25 -> 00:27] Ouais, ce serait mieux.
+[00:27 -> 00:27] Ouais ?
+[00:27 -> 00:28] Ouais.
+[00:28 -> 01:43] ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+[01:46 -> 01:50] On peut essayer de tous s'y connecter, on sera sur Google Meet, est-ce que ça va fonctionner ou pas ?
+[01:50 -> 01:57] Moi je suis pas sûre d'avoir du son sur Meet, c'est un gag, mais je peux essayer puis mon téléphone.
+[01:57 -> 02:00] Non mais je peux essayer éventuellement d'avoir le son sur mon téléphone.
+[02:00 -> 02:10] Comme tu veux.
+[02:10 -> 02:18] Tout pareil.
+[02:18 -> 02:46] Si qu'un, c'est Jean-Pierre et pas forcément vendeur, vos experts voient de votre parcours.
+[02:49 -> 02:51] Super.
+[03:00 -> 03:07] Je suis architecte en IAS, ce qui veut dire que je sais concevoir des pipelines avec des microservices
+[03:07 -> 03:15] pour pouvoir réentraîner automatiquement des modèles quand il y a un data drift ou un concept drift.
+[03:18 -> 03:27] Data Scientist pendant un peu plus de trois ans chez Interflora, j'ai travaillé sur des prévisions d'activités avec des séries temporelles.
+[03:27 -> 03:39] Un truc que j'ai pas indiqué, c'est que j'ai aussi essayé de prédire pourquoi la marge s'effondrait sur certaines commandes qu'on livrait.
+[03:39 -> 03:45] J'ai mis aussi en place un dashboard sur quatre pays.
+[03:46 -> 03:55] Pour surveiller l'élasticité, prix, position, catégorie de nos produits et ceux de nos concurrents, France, Espagne, Italie.
+[03:57 -> 04:06] Et puis avant tout ça, j'ai passé un peu plus de 10 ans à côté du métier pour construire des solutions fondées sur la data
+[04:07 -> 04:13] pour résoudre des questions de positionnement, ciblage, évaluation de marché ou d'acteurs.
+[04:14 -> 04:39] J'aime bien SQL. Si j'en suis à faire un manifesto, du moins un modèle d'IA doit être explicable pour que le métier puisse s'en servir et que l'on est au service des métiers.
+[04:39 -> 05:03] Voilà donc j'aime bien construire à l'établi assis à côté d'eux. Et j'habite à Lyon, ouais. Ah c'est bien ça !
+[05:03 -> 05:09] En face, si j'ai bien compris votre CV, vous avez fait au départ le EM Lyon, c'est ça ?
+[05:09 -> 05:10] Ouais.
+[05:10 -> 05:12] J'étais juste en face.
+[05:12 -> 05:13] À Centrale ?
+[05:13 -> 05:17] En face.
+[05:17 -> 05:18] Ouais, ouais, donc à Centrale quoi.
+[05:18 -> 05:20] Comment on parle ?
+[05:20 -> 05:21] Donc à Centrale.
+[05:21 -> 05:22] C'est ça, à Centrale.
+[05:25 -> 05:31] Oui, j'ai piqué aux rues des couverts et les petits verres. Ils étaient vachement bien.
+[05:31 -> 05:38] Ah oui, d'accord. Vous étiez bien liés avec vous, je me souviens.
+[05:38 -> 05:51] Nous, on venait plus aller pour... Certains ont commencé à remonter, ce n'est pas forcément.
+[05:51 -> 05:55] Je suis responsable de l'équipe data chez ECG.
+[05:55 -> 06:02] Cette équipe data, elle a toutes les responsabilités du début du pipeline jusqu'à l'exposition de la donnée au métier.
+[06:02 -> 06:07] C'est-à-dire qu'on a des data engineers, des data analysts, des data scientists.
+[06:09 -> 06:37] Le système de réservation est un système central qui ne nous appartient pas, c'est un logicien.
+[06:37 -> 06:41] On est en charge de récupérer cette donnée, l'ingérer depuis les systèmes sources,
+[06:46 -> 07:00] Dans une architecture médaillon, on est passé à ça il n'y a pas si longtemps que ça donc on a un bon niveau de maturité sans être du tout en avance sur le marché.
+[07:00 -> 07:08] Je pense qu'on est bon sur notre secteur, on est à certains standards, on n'est pas forcément en avance d'un point de vue de tous les patterns design etc.
+[07:08 -> 07:15] Et ensuite on prend cette data, on la transforme, on l'analyse de façon soit ad hoc pour répondre à des questions.
+[07:15 -> 07:53] ________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+[07:53 -> 07:57] Confronté à ça parfois, attention quand on parle d'IAG, il y a un peu tout derrière.
+[07:57 -> 08:04] Moi je pense qu'il y a certains blocs, certains algos, certains modèles d'IAG qui nous manquent,
+[08:04 -> 08:12] des choses pas forcément basiques, mais en tout cas sur des sujets clés tels que pricing ou recommandations sur le web par exemple,
+[08:12 -> 08:16] qu'ils manquent, on aimerait bien pousser un peu plus.
+[08:16 -> 08:21] Bref, pour le contexte, on en a une grosse partie d'actifs.
+[08:21 -> 08:26] En tout cas, la data est beaucoup conforme de BI, il y a des rapports qu'on expose aux clients.
+[08:26 -> 08:36] On est une équipe transverse, donc on a des clients internes qui sont à la fois le marketing stratégique.
+[08:36 -> 08:45] T1 occupe de gérer son renouvellement et sa répartition dans les sites.
+[08:45 -> 08:55] Donc voilà, on a une diversité de clients internes assez importante, niveau de consommation de données, mais on adresse des problématiques assez différentes.
+[08:55 -> 09:10] Le sujet pour lequel on a besoin, c'est l'équipe, c'est le sujet de ce parti, la crise de revenu pour l'admission de prix.
+[09:10 -> 09:15] Donc on les change de façon dynamique dans la saison pour être au plus, voilà, pour jouer avec la demande.
+[09:16 -> 09:35] Et ce sujet là, quand on l'a commencé, on n'était pas mature, suffisamment mature pour, on a travaillé avec une boîte externe qui s'appelle ORTEC, un cabinet de conseil hollandais en mathématiques et logistique, je crois, au départ, et qui duvait à co-construire ce modèle de recrutement.
+[09:35 -> 09:50] Il y a tout un écosystème, l'étape suivante dans l'organisation, et donc on aimerait bien pouvoir challenger un petit peu plus ce modèle dont on n'est pas pleinement...
+[10:06 -> 10:09] Ce qui n'est pas forcément le cas aujourd'hui.
+[10:09 -> 10:15] Donc le coeur de la mission sera vraiment sur l'analyse approfondie de ces données de pricing
+[10:15 -> 10:25] mais sous un angle quand même assez large, c'est-à-dire à la fois challenger l'élève qui est utilisée,
+[10:25 -> 10:32] les décisions qu'on a prises dans le passé ont-elles été les bonnes ?
+[10:32 -> 10:36] Donc faire un petit peu d'analyse rétrospective et ça c'est pas simple sur les problèmes de prix.
+[10:36 -> 10:45] Et puis peut-être même, ce sera plutôt en deuxième étape, comprendre est-ce que le mode est en place.
+[10:45 -> 10:52] Functionne aussi bien qu'il devait être capable de proposer quelque chose qui vient challenger ses recommandations et s'y est mis pour quoi, voilà, vraiment.
+[10:52 -> 11:18] Avoir un peu un contrepoids aux partenaires, d'activer au début de Data Engineer, Scientist Analyst, on a aussi nos petites routes qui pipeline à maintenir,
+[11:18 -> 11:33] donc je pense que l'activité est naturellement pas que centrée sur la partie Data Science, Data Analyse, mais ceci dit, voilà, je pense que ça doit rester 80% de rester sur ce sujet assez profond.
+[11:33 -> 11:39] Et après, il y a toujours des échanges transverses avec Data Engineer, Data Scientist, Data Analyse d'autres équipes.
+[11:39 -> 11:51] On se projette vraiment dans le temps parce qu'on parle d'un CDI, une fois qu'on a acquis de la maturité sur ce sujet et qu'on a réussi à tirer des conclusions de toutes ces analyses
+[11:51 -> 11:57] et d'avoir éventuellement un modèle qui tourne et qui challenge les recommandations de prix, quand il y a peut-être moins de temps à passer là-dessus,
+[11:57 -> 12:00] il y a plein d'autres sujets qui nous attendent sur la partie Data Science.
+[12:00 -> 12:04] Et ça, là, je me projette déjà un peu loin.
+[12:09 -> 12:13] Du cadre et de la mission, c'est déjà clair ?
+[12:13 -> 12:19] On va riper sur le tu.
+[12:19 -> 12:22] Ouais, super clair.
+[12:22 -> 12:25] Ouais, j'ai des questions.
+[12:25 -> 12:27] Est-ce que c'est pour tous les pays ?
+[12:27 -> 12:33] Parce que j'ai vu que le groupe était implanté dans différents pays,
+[12:33 -> 12:39] où il y a eu des modifications de TVA récemment.
+[12:40 -> 12:50] Est-ce que ça concerne tous les pays, uniquement les sites détenus en propres ou les autres sites partenaires ?
+[12:50 -> 12:55] C'est une très bonne question. Ça concerne tous les pays.
+[12:55 -> 13:08] En Espagne, je pense que c'est les Hollandais.
+[13:08 -> 13:26] En effet, on a quatre crédits de prix cités et les prix s'effectuent pour tout.
+[13:26 -> 13:32] C'est également le cas pour sites en propres et sites partenaires.
+[13:32 -> 13:45] Alors en fait, je pense au niveau dans le sens où tout le détail, le site en propres et le site partenaires,
+[13:52 -> 14:01] Les dépenses F&B?
+[14:01 -> 14:09] On se parle sur si on n'est pas encore de yield, sur la partie F&B par exemple.
+[14:09 -> 14:21] En effet, s'il arrive chez nous, donc tout ce qui va être l'offre, par exemple d'avoir des chiens, c'est un supplément, voilà ce genre de truc.
+[14:21 -> 14:47] Bon ça va, ça va, book pour la saison, sur lesquels on va mettre par exemple des portes sur ce camping-là.
+[14:47 -> 14:54] Ce garant, on va dire, du niveau de prestation qu'on a sur le client.
+[14:54 -> 15:00] Si c'est trop froid, ça sert à rien de venir me dire à nous. Malheureusement, on aura pas la main dessus.
+[15:00 -> 15:05] D'accord.
+[15:05 -> 15:08] En fonction de ce que tu viens de dire, j'en ai dû deux choses.
+[15:08 -> 15:12] La première, c'est que sur les sites gérés en propres,
+[15:12 -> 15:15] il y aura peut-être, ou il y a sans doute déjà,
+[15:15 -> 15:25] une analyse des points de friction clients.
+[15:25 -> 15:29] On essaie de l'exploiter au mieux pour comprendre
+[15:29 -> 15:33] quels sont les plus et les moins cités par les clients.
+[15:35 -> 15:54] J'ai entendu parler de BigQuery, est-ce que ça veut dire aussi qu'aujourd'hui vous disposez des Google Trends et des prévisions de demandes par marché fournies par Google ou pas encore ?
+[15:54 -> 16:00] Alors ça c'est une excellente question, je ne saurais pas répondre honnêtement. Je pense que le côté data on ne l'exploite pas.
+[16:06 -> 16:31] __________________________________________________________________________________________________________
+[16:33 -> 16:38] Il y a des pics de saisonnalité hyper fort, forcément au moment des vacances classiques.
+[16:38 -> 16:42] Mais il y a aussi un débordement sur les ailes de début et fin de saison.
+[16:42 -> 16:49] Je pense qu'avec toute cette période de canicule qu'on a enregistrée cette année,
+[16:49 -> 16:57] ou d'incendie dans les campings, on doit avoir une extension de l'activité sur septembre, octobre et méjon.
+[17:05 -> 17:11] Un chiffre de géographie. La côte d'Azur en plein été, ce n'est pas aussi bien que ça pourrait être.
+[17:11 -> 17:15] Il y a plus un chiffre, c'est-à-dire la destination, le fameux location.
+[17:15 -> 17:24] En tout cas, on va observer cette année, voir si c'est les tendances qui se maintiennent.
+[17:24 -> 17:34] Une autre question, mais par pure curiosité, parce que je ne te cache pas que j'ai un peu préparé notre échange.
+[17:36 -> 17:46] J'adore BeMAD et j'adore réfléchir avec BeMAD, notamment sur les brainstorming pour essayer d'imaginer et mieux comprendre.
+[17:46 -> 17:51] C'est quand même une preuve minimale de respect d'arrivée préparée.
+[17:51 -> 18:04] Est-ce qu'on a la traçabilité des décisions prises qui avaient été recommandées par rapport à...
+[18:04 -> 18:08] Quelle part de décisions prix recommandées n'ont pas été appliquées ?
+[18:08 -> 18:11] Est-ce qu'on a la traçabilité ?
+[18:11 -> 18:13] Tout à fait, c'est une bonne question.
+[18:13 -> 18:15] C'est vraiment le cœur de la donnée qui va t'intéresser,
+[18:15 -> 18:18] je pense, pendant cette fameuse analyse rétrospective.
+[18:18 -> 18:35] On a logué tout ça, on peut savoir
+[18:35 -> 18:43] est-ce que le prix décision complètement de baisser
+[18:43 -> 18:46] quand on en est au vis-à-vis de ça.
+[18:46 -> 18:48] Donc tout ça on l'a.
+[18:48 -> 18:56] Price point, définir tous les points de prix
+[18:56 -> 18:58] qu'on peut céter sur la saison.
+[18:58 -> 19:02] Et bien en fait, on price au produit,
+[19:03 -> 19:33] Et d'un point de vue légal, ça se passe comment ?
+[19:33 -> 19:49] Il n'y a pas des règles de discount ou d'augmentation qu'on a le droit d'appliquer ou pas d'un point
+[20:05 -> 20:16] Comme étant une promotion de 20% versus le prix barré, il faut que ce prix barré ait pu être constaté comme étant le réel prix de vente sur les 30 derniers jours.
+[20:16 -> 20:18] D'accord.
+[20:18 -> 20:23] On ne peut pas juste se faire plaisir pour dire que normalement c'était 1500 euros alors qu'on n'a jamais vendu ce truc.
+[20:23 -> 20:26] Voilà, ça semble raisonnable tout simplement.
+[20:26 -> 20:37] Et l'autre contrainte qui peut nous embêter sur le sujet du pricing, c'est qu'il est légalement impossible de proposer deux prix différents pour exactement le même produit à deux clients.
+[20:39 -> 20:48] Donc ça, ça va nous embêter et je te laisse deviner où.
+[20:48 -> 20:51] Le comité d'entreprise ?
+[20:51 -> 20:56] Le comité d'entreprise, pourquoi tu le mets en mettant à ce niveau-là ?
+[20:56 -> 21:05] Bah, peut-être pas les mêmes règles suivent.
+[21:05 -> 21:08] Remarque, comment est-ce qu'un comité d'entreprise peut savoir
+[21:08 -> 21:14] qu'un autre comité d'entreprise bénéficie d'une ristourne plus importante.
+[21:14 -> 21:16] Je sais pas.
+[21:16 -> 21:22] Sur la partie B2B, ça pourrait, mais...
+[21:23 -> 21:36] Dans un point de vue méthode, on va dire data, etc., dans quel cadre on aurait envie de se dire, on propose deux prix, dix sur le même produit ?
+[21:36 -> 22:04] Suivant l'origine géographique du client. Parce que si la TVA est de 21% en Netherland alors qu'elle est que de je sais pas combien en France, si...
+[22:04 -> 22:10] J'ai pas vérifié si c'est 11% ou je sais plus.
+[22:10 -> 22:26] Je crois que c'est 20% aussi.
+[22:26 -> 22:35] A voir si il effectue la recherche avec un VPN sur un site en France ou sans VPN.
+[22:35 -> 22:55] Non mais ça c'est une question qu'on se pose.
+[22:55 -> 23:11] Ça pourrait être du drift, on a compris que c'était moins cher.
+[23:11 -> 23:13] On va voir des sites en Pologne.
+[23:18 -> 23:22] La partie où je voulais plus t'emmener, c'était sur la partie test A-B.
+[23:22 -> 23:28] As-tu déjà fait ça dans tes expériences précédentes ?
+[23:28 -> 23:34] Vu que je n'ai pas directement prédit des prix, mais j'ai prédit des niveaux d'activité.
+[23:34 -> 23:47] Mais c'est quel hold-out on garde pour effectuer une comparaison.
+[23:53 -> 23:58] Si on teste des hypothèses sur un nouveau modèle, on ne va pas le faire sur tous les sites,
+[23:58 -> 24:08] on va le faire sur une dizaine ou une quinzaine de sites partenaires où s'intéressent les mecs
+[24:08 -> 24:15] pour ne pas qu'ils dégomment à la main toutes les préconisations qu'on peut faire.
+[24:15 -> 24:19] Alors, c'est plein de choses intéressantes.
+[24:19 -> 24:25] En effet, le test A-B, l'idée, enfin, en fait, l'origine de la question, c'est celle-ci.
+[24:25 -> 24:26] On a un modèle.
+[24:26 -> 24:33] On a un modèle baseline qui nous fait de la recommandation de prix qui est en prod actuellement.
+[24:33 -> 24:38] On continue de bosser dessus et puis on a une V2 qu'on suppose être meilleure.
+[24:38 -> 24:43] Et la question c'est comment, est-ce qu'on se convainc qu'elle est meilleure ?
+[24:43 -> 24:51] Du coup tu as mentionné la partie YAMO, c'est-à-dire qu'on a réussi à mettre en place un cadre suffisamment rumieux de simulation.
+[24:51 -> 24:57] Du coup on peut se dire sur des catéries un peu théoriques, ok notre modèle V2 il a l'air quand même d'apporter de la performance.
+[24:57 -> 25:01] Maintenant on a envie de le tester en prod et s'assurer que c'est le cas.
+[25:02 -> 25:14] Le test A-B, c'est souvent comme super outil, c'est-à-dire qu'on envoie une sous-partie de notre population relativement faible et suffisamment pour que statistiquement ça tienne la route.
+[25:14 -> 25:18] Donc on prend pas trop de risques et on arrive à mesurer parce qu'on a beaucoup de volume.
+[25:18 -> 25:25] Là, comme on n'a pas le droit de faire en sorte que deux clients voient les mêmes choses au même prix, le test A-B, c'est bon. Donc c'est embêtant.
+[25:25 -> 25:40] Une stratégie qu'on pourrait dépenser pour essayer de se convaincre malgré tout et de faire un test le plus pertinent possible pour se dire que le modèle 2, en effet, il a l'air d'être meilleur que le modèle 1.
+[25:41 -> 25:50] J'imagine qu'on doit avoir une équivalence des campings.
+[25:50 -> 26:02] Tu dois avoir des sites qui sont équivalents en termes de prix, prestations, localisation et météo.
+[26:02 -> 26:09] Et justement tu splits en fonction de ces sites-là.
+[26:09 -> 26:16] Parce qu'il y a la règle de l'emplacement, l'emplacement, l'emplacement, donc à la limite tu peux presque justifier que...
+[26:16 -> 26:20] En fonction de cette localisation-là, tu peux appliquer ce prix-là.
+[26:20 -> 26:42] On a pas encore pensé, mais je pense que c'est une bonne idée de tester de cette façon-là.
+[26:42 -> 26:47] C'est-à-dire de clusteriser nos campings quelque part en fonction d'un certain nombre de features,
+[26:47 -> 26:49] pour se dire qu'on a des campings qui se comportent de façon similaire,
+[26:49 -> 26:54] et puis de tester sur l'un d'entre eux des prix A et sur l'autre des prix B, et puis voir lequel...
+[26:54 -> 27:20] Et puis tu rajoutes aussi, alors pas forcément la météo parce que si les réservations sont faites plus de trois mois à l'avance avec un prix plus élevé, mais peut-être le niveau de prix à prestations comparables chez un concurrent à moins d'un kilomètre.
+[27:20 -> 27:38] Plus le volume de recherche sur Google sur cette destination-là, tu imputes est-ce qu'il y a des jours ferrés ou pas, peut-être le coût de l'essence.
+[27:38 -> 28:10] Non mais c'est super, tout repose, simple, c'est offres et demandes et licités au niveau du prix, ça c'est, mais l'estimation de ces paramètres-là est hyper importante et la demande va dépendre énormément en effet de tous ces facteurs un peu exogènes.
+[28:10 -> 28:20] Et de même pour l'élasticité, c'est important de la comprendre bien, donc je pense que c'est les features qu'on aurait envie de mettre dans l'étude, c'est clair.
+[28:20 -> 28:39] Ouais. Et Noélie me disait, il va te parler de Random Forest ou de XGBoost, et moi j'ai envie de dire, et Prophet, tu l'as utilisé ou pas ?
+[28:39 -> 28:40] Oups.
+[28:40 -> 28:54] Ouais, non c'est une bonne question.
+[28:56 -> 29:03] Pourquoi Prophet ? Parce que, modèle hyper léger, hyper rapide, tu peux ajouter autant de régresseurs que tu veux.
+[29:06 -> 29:09] A inconvénient, tu dois faire des prévisions sur tes régresseurs.
+[29:11 -> 29:17] Avec des volumes de recherche Google, c'est tout nickel parce qu'ils te donnent des prévisions à court ou moyen terme.
+[29:19 -> 29:25] Prévision météo, ça me paraît difficile.
+[29:27 -> 29:41] Mais moi, quand j'avais testé l'implémentation de ça chez Interflora, finalement, un Prophète était meilleur qu'un XGBoost et moi ce qui compte, pour moi ce qui compte c'est la mesure de l'erreur.
+[29:46 -> 29:52] Et j'avais mesuré l'erreur en fonction de quel récréseur et pourquoi.
+[29:53 -> 30:11] Du moins, si je rajoute 1, 2, 3, quelles combinaisons, desquelles, et au final, finalement, juste les jours fériés, les volumes de recherche, et l'imputation des jours fériés avant et après, ça faisait largement la blague.
+[30:27 -> 30:38] Enfin, ça y ressemble mais c'est plus classique, en tout cas on a commencé par la prévision de demandes, la vitesse de pick-up récent,
+[30:38 -> 30:48] la notion de dynamique de marché, etc. mais on n'a jamais, et je pense qu'on n'utilise pas assez, la notion de time série, de saisonnalité au sein de nos cours d'achat.
+[30:48 -> 30:56] Et ce serait vachement intéressant à essayer parce qu'on remarque d'ailleurs que la trend change beaucoup.
+[30:56 -> 31:03] C'est-à-dire que le comportement d'achat de nos utilisateurs sur les trois dernières années, il a quand même vachement de drift.
+[31:09 -> 31:51] La question initiale qui était posée, c'est est-ce qu'on va vers une dégradation de la demande qui est intrinsèque, une tendance ?
+[31:51 -> 31:54] L'utilité concrète et directe, c'était finalement...
+[32:23 -> 32:40] Pour le service client, qui, sur les pics d'activité, avait besoin de pouvoir cuber le nombre de personnes en call center pour absorber les insatisfactions.
+[32:40 -> 32:53] Donc avoir à court et moyen terme une estimation du volume de bouquets qui allait être vendu, ça permettait de dimensionner les mecs.
+[33:08 -> 33:19] On a ces sujets nous aussi, on a un call center, et on a ces sujets de pick de charge sur les call centers.
+[33:19 -> 33:34] Pour l'instant, on les a adressés à cette prédiction et d'avoir la flexibilité, mais c'est un manque.

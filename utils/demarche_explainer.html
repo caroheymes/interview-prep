@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Démarche méthodologique BMad + ECC — European Camping Group</title>
+<style>
+  :root {
+    --bg: #F6F3EC;
+    --surface: #FFFFFF;
+    --ink: #14171C;
+    --muted: #525B67;
+    --accent: #9A6B1A;
+    --emerald: #0F766E;
+    --terracotta: #B45309;
+    --border: rgba(20, 23, 28, 0.12);
+    --font-sans: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: "Consolas", "Cascadia Code", monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1280px;
+    height: 720px;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    position: relative;
+  }
+  .bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(20,23,28,0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(20,23,28,0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .topbar {
+    position: absolute; top: 0; left: 0; right: 0; height: 48px;
+    padding: 0 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(246,243,236,0.92);
+    font-family: var(--font-mono);
+    font-size: 12px; letter-spacing: 0.08em; color: var(--accent);
+    z-index: 10;
+  }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 10px; }
+  .scene {
+    position: absolute; inset: 48px 0 48px 0;
+    padding: 42px 56px 24px;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+  }
+  .scene.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+  }
+  h1 { font-size: 46px; line-height: 1.1; font-weight: 700; margin-bottom: 16px; max-width: 980px; }
+  h2 { font-size: 36px; line-height: 1.14; font-weight: 700; margin-bottom: 14px; max-width: 1060px; }
+  em { color: var(--accent); font-style: italic; }
+  .lead { font-size: 18px; line-height: 1.48; color: var(--muted); max-width: 980px; margin-bottom: 28px; }
+  .row { display: grid; gap: 18px; width: 100%; }
+  .cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .cols-5 { grid-template-columns: repeat(5, 1fr); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 6px 20px rgba(20,23,28,0.04);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .card.show { opacity: 1; transform: translateY(0); }
+  .card.hl { border-left: 4px solid var(--accent); }
+  .card.em { border-left: 4px solid var(--emerald); }
+  .kicker { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; }
+  .card h3 { font-size: 18px; margin-bottom: 8px; line-height: 1.25; }
+  .card p { font-size: 14px; line-height: 1.48; color: var(--muted); }
+  .metric { font-size: 34px; font-weight: 700; color: var(--accent); margin-bottom: 6px; font-family: var(--font-mono); }
+  .metric.em { color: var(--emerald); }
+  .pill {
+    display: inline-block; margin-top: 10px; padding: 4px 10px; border-radius: 999px;
+    font-family: var(--font-mono); font-size: 11px;
+    background: rgba(154,107,26,0.1); color: var(--accent);
+  }
+  .pill.em { background: rgba(15,118,110,0.1); color: var(--emerald); }
+  .flow {
+    display: flex; align-items: stretch; gap: 12px; margin-top: 8px;
+  }
+  .step-box {
+    flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; opacity: 0; transform: scale(0.96);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .step-box.show { opacity: 1; transform: scale(1); }
+  .step-num { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); margin-bottom: 6px; }
+  .step-box h3 { font-size: 16px; margin-bottom: 6px; }
+  .step-box p { font-size: 13px; color: var(--muted); line-height: 1.42; }
+  .progress {
+    position: absolute; top: 48px; left: 0; height: 3px; background: var(--accent);
+    width: 0%; transition: width 0.5s ease; z-index: 11;
+  }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="topbar">
+  <div><span class="dot"></span>MÉTHODE BMAD + ECC / ÉTUDE DE CAS EUROPEAN CAMPING GROUP</div>
+  <div id="sceneCounter">SCÈNE 01 / 06</div>
+</div>
+<div class="progress" id="progress"></div>
+
+<!-- SCÈNE 1 : THÈSE -->
+<section class="scene active" id="scene-1">
+  <div class="eyebrow">01 · Le point de départ</div>
+  <h1>D'une offre de 80 lignes à une <em>feuille de route vérifiée sur le terrain</em></h1>
+  <p class="lead">Comment une orchestration rigoureuse (BMad, workflows Python, exigences ASD-STE100 et recalage post-entretien) transforme une candidature Data Scientist Senior en proposition de direction.</p>
+  <div class="row cols-4">
+    <div class="card hl"><div class="metric">80</div><h3>Lignes d'entrée</h3><p>Une offre Data Scientist Senior Pricing &amp; RM à Aix-en-Provence chez ECG.</p></div>
+    <div class="card"><div class="metric">5 pistes</div><h3>Deep Recon</h3><p>Enquête parallèle 2025-2026: marché, domaine HPA, concurrence, stack et utilisateurs.</p></div>
+    <div class="card em"><div class="metric em">80 %</div><h3>Confirmés en entretien</h3><p>ORTEC, Resalys, BigQuery, logs de débrayage, Omnibus 30j et blocage A/B test.</p></div>
+    <div class="card hl"><div class="metric">0,0</div><h3>Score densité IA</h3><p>Contrôle MCP ai-remover et réécriture contrôlée ASD-STE100 sur tous les livrables.</p></div>
+  </div>
+</section>
+
+<!-- SCÈNE 2 : TEMPS 1 -->
+<section class="scene" id="scene-2">
+  <div class="eyebrow">02 · Temps 1 — Enquête factuelle automatisée (workflow_01_recon.py)</div>
+  <h2>Cinq pistes parallèles <em>sourcées 2025-2026</em> avant toute hypothèse</h2>
+  <p class="lead">Chaque piste sépare strictement les faits publics vérifiés (Eurostat, INSEE, S&amp;P, Septeo/Resalys, DMA, Omnibus) des hypothèses à auditer en interne.</p>
+  <div class="row cols-5">
+    <div class="card hl"><div class="kicker">PISTE MR</div><h3>Marché HPA</h3><p>413 M de nuitées UE, 74 % du CA ECG sur juillet-août, 67 % coûts fixes.</p><span class="pill">S&amp;P / INSEE</span></div>
+    <div class="card"><div class="kicker">PISTE DR</div><h3>Domaine &amp; Droit</h3><p>TVA NL 21 % et BE 12 %, Omnibus 30j, art. L. 221-5, DMA, AI Act.</p><span class="pill">Juridique 2026</span></div>
+    <div class="card"><div class="kicker">PISTE CR</div><h3>Concurrence</h3><p>Landal, PVCP/Duetto, Sandaya/Maxxton, Huttopia: erreurs à éviter.</p><span class="pill">4 leaders UE</span></div>
+    <div class="card em"><div class="kicker">PISTE TS</div><h3>Stack &amp; Prestataire</h3><p>Resalys, BigQuery, Dataform, piste ORTEC et latence API GraphQL.</p><span class="pill em">GCP / Resalys</span></div>
+    <div class="card"><div class="kicker">PISTE UV</div><h3>Parties prenantes</h3><p>Aix, Montpellier, Breda, 117 sites propres vs ~350 partenaires TO.</p><span class="pill">Adoption RM</span></div>
+  </div>
+</section>
+
+<!-- SCÈNE 3 : TEMPS 2 -->
+<section class="scene" id="scene-3">
+  <div class="eyebrow">03 · Temps 2 — Arbitrages humains et spécifications ASD-STE100</div>
+  <h2>Quatre jalons interactifs pour <em>verrouiller le produit</em> sans jargon</h2>
+  <p class="lead">L'humain tranche la posture avant le code: aucun remplacement brutal, quatre lignes rouges explicites et des exigences atomiques testables.</p>
+  <div class="flow">
+    <div class="step-box"><div class="step-num">ÉTAPE 2.1 · BRAINSTORMING</div><h3>Posture &amp; Lignes rouges</h3><p>Sortie des "3 POCs isolés" vers une feuille de route globale incarnant 15 ans métier + Interflora + MLOps.</p></div>
+    <div class="step-box"><div class="step-num">ÉTAPE 2.2 · PRODUCT BRIEF</div><h3>Thèse &amp; 4 temps</h3><p>Actif tarifaire co-construit, Resalys conservé, zéro bascule juillet-août, sobriété GCP.</p></div>
+    <div class="step-box"><div class="step-num">ÉTAPE 2.3 · PRFAQ M+12</div><h3>Objections difficiles</h3><p>Réponses frontales Direction, DPO/Juridique, Tech/Data et Revenue Managers.</p></div>
+    <div class="step-box"><div class="step-num">ÉTAPE 2.4 · PRD ASD-STE100</div><h3>28 FR &amp; 10 NFR</h3><p>Vocabulaire contrôlé, scoring /100, 4 kill-switches, annexe SHAP, RF, XGBoost et Optuna.</p></div>
+  </div>
+</section>
+
+<!-- SCÈNE 4 : TEMPS 3 -->
+<section class="scene" id="scene-4">
+  <div class="eyebrow">04 · Temps 3 — Architecture, stress-test adversarial et build (workflow_02_build.py)</div>
+  <h2>Durcir chaque décision par <em>cinq ateliers critiques en parallèle</em></h2>
+  <p class="lead">Avant de produire la présentation, l'architecture passe au crible de cinq méthodes adversaires pour transformer chaque risque en parade activable sous 48h.</p>
+  <div class="row cols-3">
+    <div class="card hl"><div class="kicker">PHASE 3A · WINSTON</div><h3>Architecture &amp; AD-01..07</h3><p>Pipeline batch serverless sous GCP/BigQuery, envoi des seuls prix modifiés vers Resalys et repli en moins de 30 minutes.</p><span class="pill">05_architecture.md</span></div>
+    <div class="card em"><div class="kicker">PHASE 3B · 5 ATELIERS</div><h3>Stress-test adversarial</h3><p>First Principles, Round Table, Pre-mortem, Red Team et Shark Tank: 4 objections levées et 3 pivots Plan B.</p><span class="pill em">06_stress_test.md</span></div>
+    <div class="card"><div class="kicker">PHASES 4 &amp; 5 · LIVRABLES</div><h3>Roadmap, RACI &amp; Deck</h3><p>6 Epics macro, trajectoire T1-T4, matrice RACI claire et présentation autonome de 15 diapositives.</p><span class="pill">07_epics + index.html</span></div>
+  </div>
+</section>
+
+<!-- SCÈNE 5 : PREUVE TERRAIN -->
+<section class="scene" id="scene-5">
+  <div class="eyebrow">05 · La boucle terrain — Entretien réel de 33 minutes avec Hugo Rannou</div>
+  <h2>Transcription Whisper locale et <em>six ajustements chirurgicaux</em> en 20 minutes</h2>
+  <p class="lead">L'entretien réel confirme 80 % des hypothèses (ORTEC, Resalys, BigQuery médaillon, logs déjà prêts, Omnibus 30j) et affine immédiatement le deck pour le débriefing technique.</p>
+  <div class="row cols-3">
+    <div class="card hl"><div class="kicker">AJUSTEMENT 01 // POSTURE</div><h3>Contrepoids constructif à ORTEC</h3><p>Analyse rétrospective sur les logs déjà journalisés, challenge de l'élasticité-prix et automatisation progressive (80 % pricing / 20 % équipe).</p></div>
+    <div class="card em"><div class="kicker">AJUSTEMENT 02 // MODÉLISATION</div><h3>Données exogènes &amp; Prophet</h3><p>Combler le défaut majeur reconnu par Hugo: Google Trends, concurrence &lt; 1 km, météo, carburant, et benchmark Prophet vs XGBoost face au drift last minute.</p></div>
+    <div class="card hl"><div class="kicker">AJUSTEMENT 03 // EXPÉRIMENTATION</div><h3>10-15 sites volontaires + Clustering</h3><p>Face à l'interdiction légale d'A/B test individuel: simulation hold-out, sites pilotes volontaires et clustering de campings jumeaux A vs B.</p></div>
+  </div>
+</section>
+
+<script>
+window.showScene = function(num) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('scene-' + num);
+  if (target) {
+    target.classList.add('active');
+    const items = target.querySelectorAll('.card, .step-box');
+    items.forEach(el => el.classList.remove('show'));
+    items.forEach((el, idx) => {
+      setTimeout(() => el.classList.add('show'), 220 + idx * 240);
+    });
+  }
+  document.getElementById('sceneCounter').textContent = 'SCÈNE 0' + num + ' / 06';
+  document.getElementById('progress').style.width = ((num / 6) * 100) + '%';
+};
+window.showScene(1);
+</script>
+</body>
+</html>

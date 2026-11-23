@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="swiss">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>European Camping Group - Plateforme interne de tarification dynamique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES
+   =========================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-height: 100%;
+    overflow: hidden;
+    padding: clamp(5rem, 8vh, 5.85rem) var(--slide-padding) clamp(0.95rem, 2vh, 1.5rem);
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+:root {
+    --title-size: clamp(1.75rem, 3.8vw, 3.35rem);
+    --h2-size: clamp(1.3rem, 2.55vw, 2.2rem);
+    --h3-size: clamp(0.92rem, 1.32vw, 1.16rem);
+    --body-size: clamp(0.75rem, 0.98vw, 0.92rem);
+    --small-size: clamp(0.64rem, 0.78vw, 0.76rem);
+
+    --slide-padding: clamp(1.5rem, 4.4vw, 5.3rem);
+    --content-gap: clamp(1.15rem, 2.35vh, 1.8rem);
+    --element-gap: clamp(0.35rem, 0.8vw, 0.75rem);
+}
+
+/* ===========================================
+   THEME PRESETS (Swiss Default / Dark Botanical / Bold)
+   =========================================== */
+html[data-theme="swiss"] {
+    --bg-primary: #F7F6F1;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #EFECE4;
+    --text-primary: #111315;
+    --text-secondary: #374151;
+    --text-muted: #5F6773;
+    --accent-primary: #9A6B16;
+    --accent-secondary: #0F5338;
+    --accent-tertiary: #B91C1C;
+    --border-subtle: rgba(17, 19, 21, 0.14);
+    --border-strong: rgba(17, 19, 21, 0.82);
+    --font-display: 'Archivo', system-ui, sans-serif;
+    --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --card-radius: 4px;
+    --shadow-soft: 0 8px 24px rgba(17, 19, 21, 0.06);
+}
+
+html[data-theme="luxury"] {
+    --bg-primary: #0B0F17;
+    --bg-surface: rgba(20, 27, 41, 0.82);
+    --bg-surface-elevated: rgba(29, 39, 58, 0.94);
+    --text-primary: #F5F2EB;
+    --text-secondary: #C5C0B5;
+    --text-muted: #8B93A3;
+    --accent-primary: #C5A059;
+    --accent-secondary: #34A882;
+    --accent-tertiary: #E07A5F;
+    --border-subtle: rgba(197, 160, 89, 0.22);
+    --border-strong: rgba(197, 160, 89, 0.55);
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --card-radius: 12px;
+    --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="bold"] {
+    --bg-primary: #080C14;
+    --bg-surface: rgba(17, 24, 39, 0.9);
+    --bg-surface-elevated: rgba(30, 41, 59, 0.96);
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0BEC5;
+    --text-muted: #78889C;
+    --accent-primary: #F59E0B;
+    --accent-secondary: #06B6D4;
+    --accent-tertiary: #F43F5E;
+    --border-subtle: rgba(245, 158, 11, 0.24);
+    --border-strong: rgba(245, 158, 11, 0.68);
+    --font-display: 'Syne', system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --card-radius: 12px;
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ===========================================
+   ATMOSPHERIC BACKGROUNDS & GRID OVERLAY
+   =========================================== */
+.bg-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(95px);
+    opacity: 0.17;
+    pointer-events: none;
+    z-index: 1;
+}
+html[data-theme="swiss"] .bg-orb {
+    opacity: 0.06;
+}
+.orb-gold {
+    width: 42vw;
+    height: 42vw;
+    background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+    top: -14vw;
+    right: -10vw;
+}
+.orb-emerald {
+    width: 34vw;
+    height: 34vw;
+    background: radial-gradient(circle, var(--accent-secondary), transparent 70%);
+    bottom: -14vw;
+    left: -8vw;
+}
+.bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+    background-size: 64px 64px;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ===========================================
+   FIXED HUD / NAVIGATION / THEME SWITCHER
+   =========================================== */
+.deck-topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 3vw, 2.5rem);
+    z-index: 100;
+    background: linear-gradient(to bottom, var(--bg-primary) 55%, transparent);
+    pointer-events: none;
+}
+
+.deck-brand {
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    pointer-events: auto;
+    font-weight: 600;
+}
+
+.deck-brand .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.deck-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    pointer-events: auto;
+}
+
+.theme-btn {
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    padding: 0.24rem 0.62rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.theme-btn.active, .theme-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+    background: var(--bg-surface-elevated);
+}
+
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    width: 6.67%;
+    z-index: 100;
+    transition: width 0.3s ease;
+}
+
+.nav-dots {
+    position: fixed;
+    right: clamp(0.65rem, 1.5vw, 1.35rem);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.36rem;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-subtle);
+    border: 1px solid var(--accent-primary);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    padding: 0;
+}
+.nav-dot.active {
+    background: var(--accent-primary);
+    transform: scale(1.35);
+}
+
+.slide-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.55rem;
+    margin-top: auto;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    color: var(--text-muted);
+    gap: 1rem;
+}
+
+/* ===========================================
+   TYPOGRAPHY & LAYOUT COMPONENTS
+   =========================================== */
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent-primary);
+    margin-bottom: clamp(0.7rem, 1.35vh, 1.05rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+.eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: var(--accent-primary);
+}
+
+h1.hero-title {
+    font-family: var(--font-display);
+    font-size: var(--title-size);
+    line-height: 1.06;
+    font-weight: 700;
+    margin-bottom: clamp(0.9rem, 1.8vh, 1.3rem);
+    max-width: 32ch;
+}
+
+h1.hero-title em, h2.slide-title em {
+    color: var(--accent-primary);
+    font-style: italic;
+}
+
+h2.slide-title {
+    font-family: var(--font-display);
+    font-size: var(--h2-size);
+    line-height: 1.12;
+    font-weight: 700;
+    margin-bottom: clamp(0.7rem, 1.35vh, 1.05rem);
+}
+
+.slide-subtitle {
+    font-size: var(--body-size);
+    color: var(--text-secondary);
+    max-width: 115ch;
+    line-height: 1.48;
+    margin-bottom: var(--content-gap);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.65rem, 1.3vw, 1.15rem);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.65rem, 1.2vw, 1.1rem);
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.55rem, 1vw, 0.95rem);
+}
+
+.card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--card-radius);
+    padding: clamp(0.72rem, 1.15vw, 1.05rem);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.36rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card.highlight {
+    border-color: var(--border-strong);
+    background: var(--bg-surface-elevated);
+}
+
+.card-index {
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    color: var(--accent-primary);
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+
+.card h3 {
+    font-family: var(--font-display);
+    font-size: var(--h3-size);
+    color: var(--text-primary);
+    line-height: 1.22;
+}
+
+.card p {
+    font-size: var(--body-size);
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.card-meta-line {
+    font-family: var(--font-mono);
+    font-size: clamp(0.62rem, 0.75vw, 0.72rem);
+    color: var(--accent-secondary);
+    font-weight: 600;
+    margin-top: 0.1rem;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+    margin-top: auto;
+    padding-top: 0.35rem;
+}
+
+.pill {
+    font-family: var(--font-mono);
+    font-size: clamp(0.58rem, 0.7vw, 0.69rem);
+    padding: 0.16rem 0.48rem;
+    border-radius: 999px;
+    background: rgba(154, 107, 22, 0.12);
+    color: var(--accent-primary);
+    border: 1px solid var(--border-subtle);
+    display: inline-block;
+}
+
+.pill.emerald {
+    background: rgba(15, 83, 56, 0.12);
+    color: var(--accent-secondary);
+}
+
+.pill.terracotta {
+    background: rgba(185, 28, 28, 0.12);
+    color: var(--accent-tertiary);
+}
+
+html[data-theme="luxury"] .pill,
+html[data-theme="bold"] .pill {
+    background: rgba(197, 160, 89, 0.15);
+}
+html[data-theme="luxury"] .pill.emerald,
+html[data-theme="bold"] .pill.emerald {
+    background: rgba(52, 168, 130, 0.16);
+}
+html[data-theme="luxury"] .pill.terracotta,
+html[data-theme="bold"] .pill.terracotta {
+    background: rgba(224, 122, 95, 0.16);
+}
+
+.bullet-clean {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+}
+
+.bullet-clean li {
+    font-size: var(--body-size);
+    color: var(--text-secondary);
+    line-height: 1.36;
+    padding-left: 0.9rem;
+    position: relative;
+}
+
+.bullet-clean li::before {
+    content: ">";
+    font-family: var(--font-mono);
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: 0.87em;
+    color: var(--accent-primary);
+    background: rgba(154, 107, 22, 0.1);
+    padding: 0.06rem 0.3rem;
+    border-radius: 4px;
+}
+
+/* Metrics / KPI bar */
+.kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.55rem, 1vw, 0.85rem);
+    margin-top: 0.65rem;
+}
+
+.kpi-box {
+    border-left: 3px solid var(--accent-primary);
+    padding: 0.45rem 0.78rem;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    border-radius: 0 var(--card-radius) var(--card-radius) 0;
+    box-shadow: var(--shadow-soft);
+}
+
+.kpi-val {
+    font-family: var(--font-display);
+    font-size: clamp(1.12rem, 1.85vw, 1.65rem);
+    font-weight: 700;
+    color: var(--accent-primary);
+    line-height: 1.1;
+}
+
+.kpi-label {
+    font-size: var(--small-size);
+    color: var(--text-secondary);
+    margin-top: 0.18rem;
+    line-height: 1.35;
+}
+
+.banner-note {
+    margin-top: 0.7rem;
+    padding: 0.58rem 0.9rem;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent-secondary);
+    border-radius: var(--card-radius);
+    font-size: var(--body-size);
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+/* Matrix table */
+.matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--body-size);
+    background: var(--bg-surface);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-soft);
+}
+
+.matrix-table th, .matrix-table td {
+    padding: clamp(0.32rem, 0.58vw, 0.52rem) clamp(0.5rem, 0.85vw, 0.78rem);
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+    line-height: 1.34;
+}
+
+.matrix-table th {
+    font-family: var(--font-mono);
+    font-size: var(--small-size);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent-primary);
+    background: var(--bg-surface-elevated);
+    font-weight: 600;
+}
+
+.matrix-table tr:last-child td {
+    border-bottom: none;
+}
+
+.matrix-table.compact td,
+.matrix-table.compact th {
+    padding: clamp(0.26rem, 0.46vw, 0.42rem) clamp(0.45rem, 0.78vw, 0.72rem);
+    font-size: clamp(0.7rem, 0.9vw, 0.84rem);
+}
+
+.matrix-table td code {
+    white-space: nowrap;
+}
+
+.matrix-table td .pill {
+    white-space: nowrap;
+}
+
+.col-nowrap {
+    white-space: nowrap;
+}
+
+.score-bar-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(17, 19, 21, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+}
+html[data-theme="luxury"] .score-bar-track,
+html[data-theme="bold"] .score-bar-track {
+    background: rgba(255, 255, 255, 0.12);
+}
+.score-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 999px;
+}
+
+/* Architecture Split (Slide 07) */
+.arch-split {
+    display: grid;
+    grid-template-columns: 1.48fr 1fr;
+    gap: clamp(0.75rem, 1.3vw, 1.2rem);
+    align-items: stretch;
+    margin-top: clamp(0.65rem, 1.35vh, 1.05rem);
+}
+
+.arch-plate {
+    padding: 0.55rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: zoom-in;
+}
+
+.arch-canvas {
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex: 1;
+    min-height: 240px;
+}
+
+.arch-canvas img {
+    max-width: 100%;
+    max-height: min(44dvh, 390px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.arch-fallback {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.42rem;
+    padding: 0.45rem;
+    color: #0F172A;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+}
+
+.arch-lane-mini {
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid #0F5338;
+    border-radius: 4px;
+    padding: 0.35rem 0.5rem;
+    background: #F8FAFC;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.arch-lane-mini span:last-child {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.arch-lane-mini.warn {
+    border-left-color: #B91C1C;
+    background: #FEF2F2;
+}
+
+.arch-lane-mini.blue {
+    border-left-color: #1D4ED8;
+    background: #EFF6FF;
+}
+
+.lane-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+    justify-content: space-between;
+}
+
+.lane-card {
+    padding: 0.48rem 0.72rem;
+    gap: 0.16rem;
+}
+
+.lane-card h3 {
+    font-size: clamp(0.84rem, 1.1vw, 0.98rem);
+}
+
+.lane-card p {
+    font-size: clamp(0.68rem, 0.86vw, 0.8rem);
+    line-height: 1.32;
+}
+
+/* Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide.is-visible .reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+.slide.is-visible .reveal-d1 { transition-delay: 0.08s; }
+.slide.is-visible .reveal-d2 { transition-delay: 0.16s; }
+.slide.is-visible .reveal-d3 { transition-delay: 0.24s; }
+
+/* ===========================================
+   RESPONSIVE & VIEWPORT SAFETY BREAKPOINTS
+   =========================================== */
+@media (max-height: 860px) {
+    :root {
+        --content-gap: clamp(0.88rem, 1.85vh, 1.25rem);
+        --title-size: clamp(1.5rem, 3.4vw, 2.85rem);
+        --h2-size: clamp(1.18rem, 2.3vw, 1.9rem);
+        --h3-size: clamp(0.88rem, 1.22vw, 1.06rem);
+        --body-size: clamp(0.71rem, 0.92vw, 0.85rem);
+        --small-size: clamp(0.6rem, 0.74vw, 0.72rem);
+    }
+    .slide-content {
+        padding-top: clamp(4.15rem, 6.8vh, 4.75rem);
+        padding-bottom: clamp(0.7rem, 1.4vh, 1.1rem);
+    }
+    .eyebrow,
+    h2.slide-title {
+        margin-bottom: 0.56rem;
+    }
+    h1.hero-title {
+        margin-bottom: 0.72rem;
+    }
+    .arch-split {
+        margin-top: 0.56rem;
+    }
+    .card {
+        padding: clamp(0.58rem, 0.95vw, 0.85rem);
+    }
+    .arch-canvas img {
+        max-height: min(40dvh, 330px);
+    }
+}
+
+@media (max-height: 700px) {
+    :root {
+        --slide-padding: clamp(0.85rem, 2.2vw, 1.75rem);
+        --content-gap: clamp(0.55rem, 1.2vh, 0.85rem);
+        --title-size: clamp(1.3rem, 3vw, 2.2rem);
+        --h2-size: clamp(1.05rem, 2vw, 1.6rem);
+        --body-size: clamp(0.66rem, 0.86vw, 0.78rem);
+    }
+    .slide-content {
+        padding-top: 3.6rem;
+    }
+    .card {
+        padding: 0.48rem 0.68rem;
+    }
+    .matrix-table.compact td,
+    .matrix-table.compact th {
+        padding: 0.22rem 0.42rem;
+        font-size: 0.66rem;
+    }
+}
+
+@media (max-height: 600px) {
+    :root {
+        --slide-padding: clamp(0.6rem, 1.8vw, 1.2rem);
+        --content-gap: clamp(0.35rem, 0.8vh, 0.55rem);
+        --title-size: clamp(1.1rem, 2.8vw, 1.75rem);
+        --body-size: clamp(0.62rem, 0.8vw, 0.74rem);
+    }
+    .slide-content {
+        padding-top: 1rem;
+    }
+    .nav-dots, .deck-topbar {
+        display: none;
+    }
+}
+
+@media (max-height: 520px) {
+    html {
+        scroll-snap-type: none;
+    }
+    .slide {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+    .slide-content {
+        max-height: none;
+        overflow: visible;
+        padding-top: 1.25rem;
+        padding-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 960px) {
+    .grid-3, .grid-4, .kpi-strip, .arch-split {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    html {
+        scroll-snap-type: none;
+    }
+    .slide {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: visible;
+    }
+    .slide-content {
+        max-height: none;
+        overflow: visible;
+        padding-top: 4.5rem;
+        padding-bottom: 1.5rem;
+    }
+    .grid-2, .grid-3, .grid-4, .kpi-strip, .arch-split {
+        grid-template-columns: 1fr;
+    }
+    .matrix-table {
+        display: block;
+        overflow-x: auto;
+        max-width: 100%;
+    }
+    .deck-brand {
+        display: none;
+    }
+    .deck-topbar {
+        justify-content: flex-end;
+    }
+    .nav-dots {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.15s !important;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+@media print {
+    @page {
+        size: 16in 9in;
+        margin: 0;
+    }
+    html, body {
+        width: 16in !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: var(--bg-primary) !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        scroll-snap-type: none !important;
+    }
+    .deck-topbar, .nav-dots, .progress-bar {
+        display: none !important;
+    }
+    .slide {
+        width: 16in !important;
+        height: 9in !important;
+        min-height: 9in !important;
+        max-height: 9in !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        overflow: hidden !important;
+    }
+    .slide-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 9in !important;
+    }
+    .slide:last-of-type {
+        page-break-after: auto !important;
+        break-after: auto !important;
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr) !important; }
+    .grid-4, .kpi-strip { grid-template-columns: repeat(4, 1fr) !important; }
+    .arch-split { grid-template-columns: 1.48fr 1fr !important; }
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<header class="deck-topbar" aria-label="Contrôles de présentation">
+    <div class="deck-brand">
+        <span class="dot"></span>
+        <span>EUROPEAN CAMPING GROUP / TARIFICATION DYNAMIQUE INTERNE</span>
+    </div>
+    <div class="deck-controls">
+        <button class="theme-btn active" data-set-theme="swiss" title="Thème Swiss Strategy (Clair)">01 · Swiss Strategy</button>
+        <button class="theme-btn" data-set-theme="luxury" title="Thème Dark Botanical">02 · Dark Botanical</button>
+        <button class="theme-btn" data-set-theme="bold" title="Thème Bold Signal">03 · Bold Signal</button>
+    </div>
+</header>
+
+<nav class="nav-dots" id="navDots" aria-label="Navigation par slide"></nav>
+<div class="progress-bar" id="progressBar"></div>
+
+<main id="deck">
+
+    <!-- ===================================================
+         SLIDE 01 : COUVERTURE / PROPOSITION DE VALEUR
+         =================================================== -->
+    <section class="slide is-visible" data-slide="1">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">Débriefing équipe technique · Feuille de route pricing sur 12 mois</span>
+            <h1 class="hero-title reveal reveal-d1">
+                Construire un <em>contrepoids interne</em> à ORTEC et automatiser le pricing chez ECG
+            </h1>
+            <p class="slide-subtitle reveal reveal-d2">
+                S'appuyer sur le socle BigQuery (architecture médaillon) et les logs Resalys déjà disponibles pour auditer l'élasticité, enrichir le modèle en données externes et prouver les gains par clustering de campings jumeaux.
+            </p>
+            <div class="kpi-strip reveal reveal-d3">
+                <div class="kpi-box">
+                    <div class="kpi-val">4 grilles</div>
+                    <div class="kpi-label">FR/IT/ES, Pays-Bas, UK et Allemagne sur sites propres et partenaires (Produit x Camping x Semaine, 218 j)</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val">Logs prêts</div>
+                    <div class="kpi-label">Prix recommandés ORTEC vs prix réellement appliqués déjà journalisés pour l'analyse rétrospective</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val">80 % / 20 %</div>
+                    <div class="kpi-label">80 % dédiés au pricing (élasticité, challenger, exogènes) et 20 % aux pipelines et sujets transverses</div>
+                </div>
+                <div class="kpi-box">
+                    <div class="kpi-val">+3 % à +5 %</div>
+                    <div class="kpi-label">Cible de RevPAC validée par clustering de campings jumeaux (contournant l'interdiction d'A/B test individuel)</div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>EUROPEAN CAMPING GROUP / PROPOSITION ALIGNÉE SUR L'ENTRETIEN AVEC HUGO RANNOU</span>
+                <span>Haut / Bas ou Espace pour naviguer · [T] thème · 01 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 02 : DIAGNOSTIC MARCHÉ ET DOMAINE HPA
+         =================================================== -->
+    <section class="slide" data-slide="2">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">01 · Diagnostic marché et domaine HPA</span>
+            <h2 class="slide-title reveal reveal-d1">Un marché à 413 M de nuitées face à <em>trois tensions majeures en 2026</em></h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                La croissance européenne (+28,5 % depuis 2015) masque un déport vers les ailes de saison, des chocs de TVA asymétriques et un rejet croissant des boîtes noires tarifaires.
+            </p>
+            <div class="grid-3 reveal reveal-d3">
+                <div class="card">
+                    <span class="card-index">CONSTAT 01 // DRIFT LAST MINUTE ET COOLCATION</span>
+                    <h3>Glissement calendaire et géographique</h3>
+                    <p>En trois ans, le comportement d'achat a glissé de l'anticipation vers le last minute, mettant le business sous tension. Mai (+14 %) et septembre (&gt; +5 %) montent, tandis que la Côte d'Azur sous-performe en plein été au profit de destinations plus fraîches ("coolcation").</p>
+                    <div class="tag-row">
+                        <span class="pill">Drift 3 ans last minute</span>
+                        <span class="pill">Déport coolcation</span>
+                    </div>
+                </div>
+                <div class="card highlight">
+                    <span class="card-index">CONSTAT 02 // 4 GRILLES MARCHÉ ET TVA 2026</span>
+                    <h3>Chocs de TVA et contournement inter-grilles</h3>
+                    <p>La TVA locative passe à 21 % aux Pays-Bas et 12 % en Belgique dès 2026. ECG tarife sur quatre grilles (FR/IT/ES, NL, UK, DE), mais n'a pas encore mesuré le volume de clients contournant leur grille nationale via <code>homair.fr</code> ou <code>homair.pl</code>.</p>
+                    <div class="tag-row">
+                        <span class="pill emerald">NL 21 % et BE 12 %</span>
+                        <span class="pill">4 grilles marché</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="card-index">CONSTAT 03 // ANGLES MORTS D'ORTEC</span>
+                    <h3>Absence d'exogènes et automatisation bloquée</h3>
+                    <p>ORTEC assure une base solide mais exploite très peu de données externes (météo, Google Trends, prix concurrents, carburant) et peu de séries temporelles. L'automatisation reste freinée par le manque de confiance et l'impossibilité d'A/B test web classique.</p>
+                    <div class="tag-row">
+                        <span class="pill terracotta">Zéro exogène actuel</span>
+                        <span class="pill">Cible débrayage &lt; 25 %</span>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>MARKET ET DOMAIN RESEARCH / CONSTATS EUROSTAT, INSEE, FNHPA ET LITTÉRATURE RM</span>
+                <span>02 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 03 : COMPETITIVE TEARDOWN (BENCHMARK EUROPÉEN)
+         =================================================== -->
+    <section class="slide" data-slide="3">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">02 · Competitive teardown et benchmarks européens</span>
+            <h2 class="slide-title reveal reveal-d1">Ce que font les leaders européens et l'<em>avantage asymétrique</em> d'ECG</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Comparer Landal, PVCP, Sandaya et Huttopia éclaire l'équilibre juste entre conservation du PMS, lisibilité tarifaire et maîtrise de la marge nette.
+            </p>
+            <table class="matrix-table reveal reveal-d3">
+                <thead>
+                    <tr>
+                        <th>Acteur benchmarké</th>
+                        <th>Échelle et modèle</th>
+                        <th>Choix RMS et signal client</th>
+                        <th>Enseignement pour ECG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Landal (KKR)</strong><br><span style="font-size:0.74em;color:var(--text-muted)">Roompot + Landal</span></td>
+                        <td>260-300+ parcs, 23-30k unités, 64 % NL et 23 % DE. Perte 2025 estimée à ~160 M EUR.</td>
+                        <td>Maxxton PMS + Reallocation Engine (+3,0 % à +4,6 % résas). Trustpilot NL à 1,5/5 sur des sauts de prix au panier.</td>
+                        <td><span class="pill emerald">Copier le remplissage</span> Reproduire l'anti-trous de planning, verrouiller la parité cache-checkout et capter le report NL/DE.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PVCP et maeva&amp;co</strong><br><span style="font-size:0.74em;color:var(--text-muted)">Coté Euronext</span></td>
+                        <td>1 998,5 M EUR CA FY26 dont maeva&amp;co 103,6 M EUR (+28,4 %, +110 franchises).</td>
+                        <td>SaaS Duetto (200+ sites) + Gen AI Studio (1 M EUR/an). Center Parcs à 1,6/5 pour des écarts de 1 600 à 900 EUR.</td>
+                        <td><span class="pill terracotta">Éviter la volatilité</span> Borner les variations faciales quotidiennes et modérer les hausses en ailes de saison.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sandaya</strong><br><span style="font-size:0.74em;color:var(--text-muted)">InfraVia Capital</span></td>
+                        <td>370 M EUR CA 2025 (+15 %), 69-70+ sites 4-5* en propre, 90-95 % vente directe.</td>
+                        <td>Migration complète vers Maxxton yield IA achevée en mai 2026. Trustpilot FR 4,4/5 (alertes sur hausses annuelles).</td>
+                        <td><span class="pill">Pont BigQuery M&amp;A</span> Intégrer 5 à 10 acquisitions par an via BigQuery en &lt; 48 h sans attendre une refonte PMS.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Huttopia et Capfun</strong><br><span style="font-size:0.74em;color:var(--text-muted)">Modèles intégrés</span></td>
+                        <td>Huttopia ~190 sites (97 % direct); Capfun 253 sites (728,7 M EUR CA 2024, 100 % direct).</td>
+                        <td>Huttosoft interne (20+ ans) et grilles fixes ou à 3 paliers lisibles, limitant la contestation tarifaire client.</td>
+                        <td><span class="pill emerald">Avantage hybride ECG</span> Garder Resalys pour le transactionnel et bâtir la couche décisionnelle propre vs TO sur GCP.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="slide-footer">
+                <span>COMPETITIVE TEARDOWN / LANDAL · PVCP MAEVA · SANDAYA · HUTTOPIA ET CAPFUN</span>
+                <span>03 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 04 : CARTOGRAPHIE DES 4 LEVIERS TARIFAIRES
+         =================================================== -->
+    <section class="slide" data-slide="4">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">03 · Cartographie des quatre leviers tarifaires</span>
+            <h2 class="slide-title reveal reveal-d1">Quatre régimes économiques à piloter sous <em>un même socle décisionnel</em></h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Un algorithme externe unique écrase les marges dès qu'il confond campings en propre, flotte partenaire, courts séjours et canaux contractuels.
+            </p>
+            <div class="grid-4 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">LEVIER 01 // SITES EN PROPRE ET ANCILLARIES</span>
+                    <h3>Hébergement, suppléments et satisfaction</h3>
+                    <p>Aujourd'hui, le yield porte sur l'hébergement locatif (pas encore sur le F&amp;B) et démarre sur les ancillaries (suppléments comme les animaux). Sur les 117 sites propres, le croisement avec les questionnaires de satisfaction éclaire la tolérance prix.</p>
+                    <div class="tag-row"><span class="pill emerald">Locatif + ancillaries</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">LEVIER 02 // ~350 SITES PARTENAIRES</span>
+                    <h3>Flotte propre sur parcelles louées</h3>
+                    <p>ECG loue des parcelles chez des partenaires (ex. 50 emplacements) et y opère ses propres mobil-homes sans contrôle sur les infrastructures (piscine, site). L'optimiseur protège la marge nette d'hébergement et les prix planchers contractuels.</p>
+                    <div class="tag-row"><span class="pill">Zéro bradage partenaire</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">LEVIER 03 // SÉRIES TEMPORELLES ET EXOGÈNES</span>
+                    <h3>Capter le drift last minute et la coolcation</h3>
+                    <p>Compléter le pick-up récent par des séries temporelles (Prophet avec régresseurs: jours fériés, volumes Google Trends, prix concurrents à moins d'1 km, carburant) permet d'absorber le drift comportemental sur 3 ans et les ailes de saison.</p>
+                    <div class="tag-row"><span class="pill emerald">Prophet vs XGBoost</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">LEVIER 04 // 4 GRILLES MARCHÉ ET CONFORMITÉ</span>
+                    <h3>Omnibus 30 jours et arbitrage inter-grilles</h3>
+                    <p>Piloter les quatre grilles (FR/IT/ES, NL, UK, DE) en mesurant le contournement inter-sites (<code>homair.fr</code> / <code>homair.pl</code>), tout en respectant l'unicité légale du prix affiché et la loi Omnibus (prix barré constaté sur 30 jours).</p>
+                    <div class="tag-row"><span class="pill terracotta">Conformité Omnibus 30 j</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>SEGMENTATION ÉCONOMIQUE / HOMAIR, EUROCAMP, ROAN, ALANNIA ET PARC PARTENAIRE</span>
+                <span>04 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 05 : LES 3 CHANTIERS DE LA TRAJECTOIRE D'INTERNALISATION
+         =================================================== -->
+    <section class="slide" data-slide="5">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">04 · Trajectoire sur 12 mois: contrepoids ORTEC et automatisation</span>
+            <h2 class="slide-title reveal reveal-d1">Trois chantiers incrémentaux pour <em>challenger ORTEC</em> et automatiser sans risque</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Capitaliser sur les logs déjà disponibles dans BigQuery (couche médaillon), enrichir le modèle en données externes, puis prouver les gains par clustering de campings jumeaux.
+            </p>
+            <div class="grid-3 reveal reveal-d3">
+                <div class="card">
+                    <span class="card-index">CHANTIER 01 // ANALYSE RÉTROSPECTIVE (M1 À M3)</span>
+                    <h3>Audit des logs ORTEC et élasticité-prix</h3>
+                    <p>Exploiter immédiatement l'historique déjà logué (prix recommandé ORTEC vs prix réellement appliqué) pour mesurer les taux de suivi et d'inversion. Challenger l'élasticité-prix par marché (4 grilles), mesurer le contournement inter-grilles et fiabiliser les règles métier dès le mois 2.</p>
+                    <div class="tag-row"><span class="pill emerald">Logs déjà prêts</span><span class="pill">Audit élasticité</span></div>
+                </div>
+                <div class="card highlight">
+                    <span class="card-index">CHANTIER 02 // CHALLENGER INTERNE ET EXOGÈNES (M3 À M6)</span>
+                    <h3>Prophet, XGBoost et données externes</h3>
+                    <p>Construire un modèle challenger à la maille Produit x Camping x Semaine (avril-octobre) en intégrant les signaux absents aujourd'hui: Google Trends, prix concurrents à moins d'1 km, jours fériés, météo et carburant. Comparer Prophet (séries temporelles) face à XGBoost et Random Forest sur la métrique d'erreur.</p>
+                    <div class="tag-row"><span class="pill emerald">Données exogènes</span><span class="pill">Prophet vs XGBoost</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">CHANTIER 03 // EXPÉRIMENTATION ET AUTOMATISATION (M5 À M12)</span>
+                    <h3>Sites pilotes volontaires et campings jumeaux</h3>
+                    <p>L'A/B test individuel étant illégal, on valide d'abord en simulation (hold-out), puis on sélectionne 10 à 15 campings pilotes volontaires (RM partants pour éviter le rejet manuel), appariés par clustering à des campings jumeaux restés sous ORTEC. Les facteurs SHAP dans Dash guident ensuite l'automatisation hors été.</p>
+                    <div class="tag-row"><span class="pill terracotta">10-15 sites volontaires</span><span class="pill">Clustering jumeaux A vs B</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>STRATÉGIE PRODUIT / DE L'ANALYSE RÉTROSPECTIVE ORTEC AU MODÈLE CHALLENGER EXPLICABLE</span>
+                <span>05 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 06 : FRAMEWORK DE SCORING SUR 100 POINTS
+         =================================================== -->
+    <section class="slide" data-slide="6">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">05 · Framework de priorisation et critères éliminatoires</span>
+            <h2 class="slide-title reveal reveal-d1">Grille de scoring sur <em>100 points</em>: objectiver chaque bascule en production</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Chaque périmètre (marque, zone géographique, site propre ou partenaire TO) passe au crible de quatre axes pondérés et cinq vetos non négociables.
+            </p>
+            <table class="matrix-table reveal reveal-d3">
+                <thead>
+                    <tr>
+                        <th>Axe d'évaluation</th>
+                        <th>Poids</th>
+                        <th>Critères mesurés avant mise en production</th>
+                        <th>Seuil de passage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Impact marge nette et RevPAC</strong></td>
+                        <td class="col-nowrap">
+                            <strong>35 pts</strong>
+                            <div class="score-bar-track"><div class="score-bar-fill" style="width:100%"></div></div>
+                        </td>
+                        <td>Gain estimé en Net RevPAC contributif HT et correction d'un biais avéré du modèle tiers (TVA 2026, courts séjours, sous-pricing été).</td>
+                        <td><span class="pill emerald">Prouvé par clustering</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Adoptabilité Revenue Management</strong></td>
+                        <td class="col-nowrap">
+                            <strong>25 pts</strong>
+                            <div class="score-bar-track"><div class="score-bar-fill" style="width:72%"></div></div>
+                        </td>
+                        <td>Baisse attendue du taux de débrayage, lisibilité des facteurs SHAP et revue matinale sous 15 min à Aix, Montpellier et Breda.</td>
+                        <td><span class="pill">Débrayage cible 20 %-25 %</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Faisabilité data et sobriété MLOps</strong></td>
+                        <td class="col-nowrap">
+                            <strong>25 pts</strong>
+                            <div class="score-bar-track"><div class="score-bar-fill" style="width:72%"></div></div>
+                        </td>
+                        <td>Disponibilité dans BigQuery (architecture médaillon), batch parallélisé avant 07h30 CET et maintien à 80 % pricing / 20 % équipe.</td>
+                        <td><span class="pill">Batch &lt; 90 min (inf. &lt; 20m)</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Maîtrise des risques et conformité</strong></td>
+                        <td class="col-nowrap">
+                            <strong>15 pts</strong>
+                            <div class="score-bar-track"><div class="score-bar-fill" style="width:43%"></div></div>
+                        </td>
+                        <td>Repli natif Resalys sous 30 minutes, registre Omnibus 30 jours, unicité du prix affiché et zéro donnée personnelle (art. L. 221-5).</td>
+                        <td><span class="pill terracotta">Veto DPO et Finance</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="kpi-strip reveal reveal-d3">
+                <div class="kpi-box"><div class="kpi-val">&ge; 75 pts</div><div class="kpi-label">Statut Go: passage prioritaire sur le trimestre courant</div></div>
+                <div class="kpi-box"><div class="kpi-val">55 à 74 pts</div><div class="kpi-label">Statut Backlog: attente d'une levée de dépendance data ou API</div></div>
+                <div class="kpi-box"><div class="kpi-val">&lt; 55 pts</div><div class="kpi-label">Statut No-Go: lot écarté de la trajectoire année 1</div></div>
+                <div class="kpi-box"><div class="kpi-val">5 vetos absolus</div><div class="kpi-label">Zéro bascule juin-août, zéro PII, zéro sans témoin, repli &gt; 2h, NL2SQL brut</div></div>
+            </div>
+            <div class="slide-footer">
+                <span>FRAMEWORK DE SCORING / ARBITRAGE OBJECTIF ENTRE IMPACT, ADOPTION ET RISQUE</span>
+                <span>06 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 07 : SCHÉMA D'ARCHITECTURE CIBLE (4 COULOIRS)
+         =================================================== -->
+    <section class="slide" data-slide="7">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">06 · Schéma d'architecture cible: pipeline serverless GCP (AD-01 à AD-07)</span>
+            <h2 class="slide-title reveal reveal-d1">Conserver le socle <em>Resalys</em> et internaliser le cerveau décisionnel sur <em>BigQuery</em></h2>
+            <div class="arch-split reveal reveal-d2">
+                <!-- Colonne Gauche : Schéma d'Architecture PNG (Cliquable plein écran) -->
+                <div class="card highlight arch-plate" id="archZoomTrigger" title="Cliquer pour agrandir le schéma en plein écran">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.35rem; padding:0 0.25rem; gap:0.5rem;">
+                        <span class="card-index">ARCHITECTURE SPINE // 4 COULOIRS BATCH SERVERLESS</span>
+                        <span class="pill emerald">Agrandir en plein écran (HD)</span>
+                    </div>
+                    <div class="arch-canvas">
+                        <img id="archDiagramImg" src="architecture.png" alt="Architecture cible de tarification dynamique ECG sur GCP, BigQuery et Resalys" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                        <div class="arch-fallback" id="archFallbackDiagram">
+                            <div class="arch-lane-mini blue">
+                                <span><strong>Étape 1 (AD-03)</strong> Import Resalys 05h45 -&gt; BigQuery -&gt; Blocage données personnelles + historique prix 30 jours</span>
+                                <span>Zéro PII</span>
+                            </div>
+                            <div class="arch-lane-mini blue">
+                                <span><strong>Étape 2 (AD-02, AD-04)</strong> Cloud Workflows -&gt; 20 tâches Cloud Run (&lt; 20 min): prévision XGBoost TTC + optimiseur OR-Tools HT</span>
+                                <span>Propre vs TO</span>
+                            </div>
+                            <div class="arch-lane-mini">
+                                <span><strong>Étape 3 (AD-01, AD-05)</strong> Cockpit Dash (&lt; 5 s) + motif débrayage en 1 ligne -&gt; Envoi des seuls prix modifiés vers Resalys</span>
+                                <span>Caches 2-ways</span>
+                            </div>
+                            <div class="arch-lane-mini warn">
+                                <span><strong>Étape 4 (AD-06, AD-07)</strong> Test automatique de 100 paniers (07h25) + 4 arrêts d'urgence -&gt; Retour grille Resalys (&lt; 30 min)</span>
+                                <span>Sécurité</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.35rem; padding:0 0.25rem; font-family:var(--font-mono); font-size:var(--small-size); color:var(--text-muted); gap:0.5rem;">
+                        <span>Import 05h45 -&gt; Calcul &lt; 20 min -&gt; Vérification 07h25 -&gt; Prêt pour les RM à 07h30 CET</span>
+                        <span>Repli &lt; 30 min</span>
+                    </div>
+                </div>
+                <!-- Colonne Droite : Les 4 Couloirs d'Exécution -->
+                <div class="lane-stack">
+                    <div class="card lane-card">
+                        <span class="card-index">COULOIR 1 // COLLECTE ET CONFORMITÉ (AD-03)</span>
+                        <h3>Collecte BigQuery sans donnée personnelle</h3>
+                        <p>Import quotidien à 05h45 CET conservé 24 mois pour audit. Le système bloque toute donnée client nominative (conformité RGPD et art. L. 221-5) et archive le prix le plus bas sur 30 jours (directive Omnibus).</p>
+                    </div>
+                    <div class="card highlight lane-card">
+                        <span class="card-index">COULOIR 2 // CALCUL DES PRIX (AD-02, AD-04)</span>
+                        <h3>Prévision demande TTC et marge nette HT</h3>
+                        <p>Cloud Workflows lance 20 tâches parallèles par région (moins de 20 minutes): estimation de la demande non servie quand le camping est complet, prévision XGBoost sur prix TTC, puis optimisation OR-Tools en marge nette HT (Propre vs TO).</p>
+                    </div>
+                    <div class="card lane-card">
+                        <span class="card-index">COULOIR 3 // VALIDATION RM ET RESALYS (AD-01, AD-05)</span>
+                        <h3>Cockpit Dash et envoi des seuls prix modifiés</h3>
+                        <p>Cockpit sécurisé (&lt; 5 s) centré sur les alertes à fort enjeu (&lt; 15 min/jour). Chaque débrayage demande 1 ligne de motif. Seuls les prix modifiés sont renvoyés à Resalys, suivis d'une mise à jour immédiate des caches web.</p>
+                    </div>
+                    <div class="card lane-card">
+                        <span class="card-index">COULOIR 4 // CONTRÔLE ET SÉCURITÉ (AD-06, AD-07)</span>
+                        <h3>Tests automatiques, repli et couche sémantique</h3>
+                        <p>Avant 07h25 CET, un robot vérifie 100 paniers tests entre le catalogue et le paiement. Suivi hebdomadaire des erreurs du modèle, retour aux grilles Resalys en moins de 30 minutes si anomalie, et couche sémantique BigQuery en phase 2.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>SCHÉMA D'ARCHITECTURE CIBLE / CLIQUER SUR LE DIAGRAMME POUR AGRANDIR EN PLEIN ÉCRAN</span>
+                <span>07 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 08 : ARCHITECTURE SPINE ET INVARIANTS AD-01..07
+         =================================================== -->
+    <section class="slide" data-slide="8">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">07 · Architecture spine: les sept invariants non négociables</span>
+            <h2 class="slide-title reveal reveal-d1">Sept décisions d'architecture (<em>AD-01 à AD-07</em>) vérifiables en production</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Chaque invariant fige un contrat technique entre Data, IT Resalys, Revenue Management et DPO. Toute dérogation bloque le déploiement.
+            </p>
+            <table class="matrix-table compact reveal reveal-d3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Invariant d'architecture</th>
+                        <th>Règle d'implémentation durcie</th>
+                        <th>Risque neutralisé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>AD-01</code></td>
+                        <td><strong>Garder Resalys et envoyer seulement les prix modifiés</strong></td>
+                        <td>Test de charge API dès S2, envoi limité aux tarifs qui changent (&le; 15 %/jour), rafraîchissement des caches web et retour aux grilles Resalys en &lt; 30 min.</td>
+                        <td><span class="pill emerald">Saturation API et écart panier</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-02</code></td>
+                        <td><strong>Architecture batch simple, sans serveur 24h/24</strong></td>
+                        <td>BigQuery conservé 24 mois, Dataform, 20 tâches Cloud Run par région (&lt; 20 min le matin, entraînement le week-end), cockpit Dash unique, aucun cluster permanent.</td>
+                        <td><span class="pill">Surcharge de l'équipe (12-15 experts)</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-03</code></td>
+                        <td><strong>Collecte BigQuery médaillon et zéro donnée personnelle</strong></td>
+                        <td>Blocage automatique de toute donnée client nominative (RGPD / L. 221-5), unicité légale du prix affiché, archivage Omnibus 30 jours et veille prix publics.</td>
+                        <td><span class="pill terracotta">Amende 75 kEUR et litige Omnibus</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-04</code></td>
+                        <td><strong>Benchmark Prophet / XGBoost + exogènes et marge HT</strong></td>
+                        <td>Séries temporelles Prophet + régresseurs (Google Trends, concurrence, jours fériés) comparées à XGBoost/RF sur prix TTC, puis optimiseur OR-Tools net HT.</td>
+                        <td><span class="pill emerald">Biais été, TVA 2026 et loyer TO</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-05</code></td>
+                        <td><strong>Gel estival et isolation des débrayages manuels</strong></td>
+                        <td>Automatique borné (+/- 2 %) hors saison, validation humaine obligatoire en juillet-août (zéro écriture automatique) et débrayages séparés de l'entraînement.</td>
+                        <td><span class="pill terracotta">Risque sur les 74 % du CA d'été</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-06</code></td>
+                        <td><strong>Cockpit explicable et clustering de campings jumeaux</strong></td>
+                        <td>Cockpit Dash (&lt; 5 s) avec explications SHAP, revue matinale &lt; 15 min, tests A vs B par clustering de campings comparables et 4 arrêts d'urgence.</td>
+                        <td><span class="pill">Rejet des RM et tests faussés</span></td>
+                    </tr>
+                    <tr>
+                        <td><code>AD-07</code></td>
+                        <td><strong>Indicateurs certifiés avant tout assistant IA</strong></td>
+                        <td>Pas de chatbot en année 1 tant que le débrayage dépasse 25 %. Construction d'abord d'une couche sémantique Finance (&ge; 95 % fiable) avec mention AI Act.</td>
+                        <td><span class="pill emerald">Erreurs de calcul d'une IA</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="slide-footer">
+                <span>ARCHITECTURE SPINE / CONTRAT DE COHÉRENCE TECHNIQUE, MÉTIER ET RÉGLEMENTAIRE</span>
+                <span>08 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 09 : NORTH-STAR METRIC, CONTRE-MÉTRIQUES ET KILL-SWITCHES
+         =================================================== -->
+    <section class="slide" data-slide="9">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">08 · Pilotage expérimental, contre-métriques et arrêt automatique</span>
+            <h2 class="slide-title reveal reveal-d1">Une métrique directrice unique verrouillée par <em>cinq contre-métriques</em> et <em>quatre kill-switches</em></h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Protocole sans A/B test individuel: simulation sur hold-out, puis 10 à 15 campings pilotes volontaires (V2 interne) comparés à leurs campings jumeaux clusterisés (ORTEC), sous contrôle de cinq garde-fous.
+            </p>
+            <div class="grid-4 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">GARDE-FOU 01 // ADOPTION MÉTIER</span>
+                    <h3>Débrayages sous contrôle</h3>
+                    <p>Le taux de débrayage reste sous 25 % sur la file prioritaire d'alertes (moins de 15 minutes par matin). Un contrôle nocturne repère aussi toute modification faite à la main directement dans Resalys.</p>
+                    <div class="tag-row"><span class="pill">Alerte &gt; 25 %</span><span class="pill terracotta">Arrêt auto &gt; 40 % (7 j)</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">GARDE-FOU 02 // AILE DE SAISON ET VOLATILITÉ</span>
+                    <h3>Volume préservé et prix stables</h3>
+                    <p>En mai, juin et septembre, l'occupation ne doit pas reculer de plus de 3 points face au groupe témoin. Des bornes quotidiennes et des plafonds entre pays empêchent toute variation brutale de prix.</p>
+                    <div class="tag-row"><span class="pill emerald">Test par régions</span><span class="pill terracotta">Arrêt auto -5 % / 14 j</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">GARDE-FOU 03 // PARITÉ CATALOGUE-PANIER</span>
+                    <h3>Test matinal de 100 paniers</h3>
+                    <p>Chaque matin avant 07h25 CET, après mise à jour des caches Resalys, un robot teste 100 paniers complets sur Homair, Eurocamp et Roan pour vérifier que le prix affiché égale exactement le prix au paiement.</p>
+                    <div class="tag-row"><span class="pill">Alerte écart &gt; 0,5 %</span><span class="pill terracotta">Arrêt auto &gt; 1 %</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">GARDE-FOU 04 // CONFORMITÉ ET FRAÎCHEUR</span>
+                    <h3>Zéro fuite et repli sous 30 min</h3>
+                    <p>Chaque matin, le système vérifie l'absence de donnée personnelle, l'historique Omnibus sur 30 jours et l'import Resalys de 05h45 CET. Chaque semaine, une sonde suit la précision (MAPE/WAPE) du modèle.</p>
+                    <div class="tag-row"><span class="pill terracotta">Arrêt auto retard &gt; 24h</span><span class="pill emerald">Audit 24 mois</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>DISCIPLINE EXPÉRIMENTALE / TESTS PAR RÉGIONS SÉPARÉES ET REPLI SUR GRILLES RESALYS &lt; 30 MIN</span>
+                <span>09 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 10 : RÉPONSES AUX OBJECTIONS DES PARTIES PRENANTES
+         =================================================== -->
+    <section class="slide" data-slide="10">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">09 · Stress-test de gouvernance: quatre objections levées</span>
+            <h2 class="slide-title reveal reveal-d1">Désamorcer les frictions <em>Finance, RM, Tech et DPO</em> avant la première ligne de code</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Cinq ateliers de résistance (First Principles, Pre-mortem, Red Team, Round Table, Shark Tank) ont durci la trajectoire face aux blocages réels.
+            </p>
+            <div class="grid-2 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">OBJECTION 01 // DIRECTION GÉNÉRALE ET PARTENARIAT ORTEC</span>
+                    <h3>"Couper ORTEC trop vite menace la trésorerie 2027 et juillet-août."</h3>
+                    <p>Pas de rupture brutale: on utilise d'abord les logs ORTEC déjà disponibles pour créer un contrepoids chiffré, on teste le challenger sur des campings jumeaux en mai 2027 et on garde juillet-août sous validation humaine. ORTEC n'est réduit qu'après preuve mesurée.</p>
+                    <div class="tag-row"><span class="pill emerald">Contrepoids constructif</span><span class="pill">74 % CA été protégé</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">OBJECTION 02 // REVENUE MANAGEMENT (AIX, MONTPELLIER, BREDA)</span>
+                    <h3>"Valider 3 000 tarifs chaque matin crée une charge bureaucratique."</h3>
+                    <p>Le cockpit ne montre que les 50 à 100 alertes à fort impact sur la marge (moins de 15 minutes par matin), avec les facteurs SHAP et une validation groupée. En juillet-août, aucun prix ne change sans accord explicite du Revenue Manager.</p>
+                    <div class="tag-row"><span class="pill emerald">Revue &lt; 15 min/jour</span><span class="pill">Validation souveraine été</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">OBJECTION 03 // BRANCHE DIGITAL, DATA ET IT (12 À 15 EXPERTS À AIX)</span>
+                    <h3>"L'API Resalys (4 s), le cockpit et 10 rachats/an vont saturer l'équipe."</h3>
+                    <p>Le test de charge API a lieu dès la semaine 2. Le système n'envoie que les prix modifiés (&le; 15 %/jour), entraîne les modèles le week-end et calcule tout en moins de 20 minutes. VacanceSelect et le chatbot IA sont reportés en phase 2.</p>
+                    <div class="tag-row"><span class="pill">Repli Resalys &lt; 30 min</span><span class="pill emerald">Rachat intégré &lt; 14 j</span></div>
+                </div>
+                <div class="card highlight">
+                    <span class="card-index">OBJECTION 04 // DPO, JURIDIQUE ET CONFORMITÉ EUROPÉENNE</span>
+                    <h3>"Cookies refusés, données clients et promos exposent aux amendes."</h3>
+                    <p>Le système bloque toute donnée personnelle dès l'import (zéro risque d'amende L. 221-5). La demande manquée s'estime à partir des dates complètes Resalys (sans dépendre des cookies) et l'historique 30 jours garantit la conformité Omnibus.</p>
+                    <div class="tag-row"><span class="pill terracotta">Conformité L. 221-5</span><span class="pill">Mention AI Act art. 50</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>ATELIERS ADVANCED ELICITATION / ALIGNEMENT FINANCE, REVENUE MANAGEMENT, IT ET JURIDIQUE</span>
+                <span>10 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 11 : GOUVERNANCE ET MATRICE RACI
+         =================================================== -->
+    <section class="slide" data-slide="11">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">10 · Gouvernance opérationnelle et matrice RACI</span>
+            <h2 class="slide-title reveal reveal-d1">Une responsabilité unique par jalon entre <em>Data Science, Métier, Tech et DPO</em></h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Trois rituels légers cadencent l'exécution: atelier bimensuel "Modèle vs RM" (45 min), comité mensuel Pricing et protocole d'escalade incident sous 2 heures.
+            </p>
+            <table class="matrix-table compact reveal reveal-d3">
+                <thead>
+                    <tr>
+                        <th>Chantier structurant</th>
+                        <th>Data Scientist Senior (Ce rôle)</th>
+                        <th>Métier (RM et Finance)</th>
+                        <th>Tech / Data (DE, Resalys, MLOps)</th>
+                        <th>Juridique et DPO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Audit prestataire, test API S2 et repli &lt; 30 min</strong></td>
+                        <td><span class="pill">C</span> Audit contrefactuel des prix</td>
+                        <td><span class="pill emerald">A</span> Décision sortie externe (Fin.)</td>
+                        <td><span class="pill emerald">A/R</span> Test API Resalys et import 05h45</td>
+                        <td><strong>R</strong> Revue contrat prestataire</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Socle BigQuery, blocage données perso et Omnibus</strong></td>
+                        <td><span class="pill">C</span> Contrat features sans PII</td>
+                        <td><strong>C</strong> Règles promos actives et CSE</td>
+                        <td><strong>R</strong> Dataform, filtres PII et table 30j</td>
+                        <td><span class="pill terracotta">A</span> Signature conformité L. 221-5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Règles métier (mois 2) et prévision XGBoost TTC</strong></td>
+                        <td><span class="pill emerald">A/R</span> Prévision, décontraction et biais</td>
+                        <td><span class="pill emerald">A</span> Validation règles métier (mois 2)</td>
+                        <td><strong>C</strong> 20 tâches Cloud Run (&lt; 20 min)</td>
+                        <td><strong>I</strong> Archivage 24 mois pour audit</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Optimiseur OR-Tools (Propre/TO) et veille 50 bassins</strong></td>
+                        <td><span class="pill">R</span> Solveur marge nette HT et veille</td>
+                        <td><span class="pill emerald">A</span> Planchers TO et bornes marque</td>
+                        <td><strong>C</strong> Infrastructure Cloud Run sécurisée</td>
+                        <td><span class="pill terracotta">A</span> Registre veille prix publics</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Cockpit Dash explicable et envoi prix modifiés</strong></td>
+                        <td><span class="pill">R</span> Explications SHAP et simulateur</td>
+                        <td><span class="pill emerald">A</span> Bornes +/- 2 % et motifs 1 ligne</td>
+                        <td><span class="pill emerald">A/R</span> Sécurité Dash et caches Resalys</td>
+                        <td><strong>I</strong> Droits d'accès Aix / MTP / Breda</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Pilote Champion/Challenger, arrêts auto et phase 2</strong></td>
+                        <td><span class="pill">R</span> Mesure ROI et fiabilité &ge; 95 %</td>
+                        <td><span class="pill emerald">A</span> Jalons Go/No-Go et sortie finale</td>
+                        <td><span class="pill emerald">A/R</span> Sonde drift, MLOps et phase 2</td>
+                        <td><span class="pill terracotta">A</span> Escalade incident et AI Act art. 50</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="slide-footer">
+                <span>MODÈLE OPÉRATIONNEL RACI / UN SEUL DÉCIDEUR (A) PAR ACTIVITÉ POUR SUPPRIMER LES ZONES GRISES</span>
+                <span>11 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 12 : FEUILLE DE ROUTE 12 MOIS (T1 À T4 + VAGUE 2)
+         =================================================== -->
+    <section class="slide" data-slide="12">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">11 · Feuille de route opérationnelle (T1 à T4 + Vague 2)</span>
+            <h2 class="slide-title reveal reveal-d1">De l'audit contrefactuel à l'<em>Early Booking 2028</em> en quatre trimestres sécurisés</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Chaque trimestre s'achève par un jalon Go/No-Go chiffré devant le comité de direction, sans jamais exposer la haute saison juillet-août à une bascule initiale.
+            </p>
+            <div class="grid-4 reveal reveal-d3">
+                <div class="card">
+                    <span class="card-index">T1 FONDATIONS // DÉC. 2026 À FÉV. 2027 (M1-M3)</span>
+                    <h3>Audit, tests API et règles dès le mois 2</h3>
+                    <p>En S1-S2, audit du contrat prestataire, test de charge API Resalys (repli &lt; 30 min), validation cockpit Dash et liste blanche DPO. Dès le mois 2, les règles prioritaires issues d'Excel/VBA passent en prod dans Dataform (écarts pays, planchers TO, TVA 2026).</p>
+                    <div class="tag-row"><span class="pill">Epic 1</span><span class="pill emerald">Go/No-Go: API + DPO OK</span></div>
+                </div>
+                <div class="card highlight">
+                    <span class="card-index">T2 QUICK-WINS // MARS À MAI 2027 (M4-M6)</span>
+                    <h3>Mode ombre, Dash et pilote de mai</h3>
+                    <p>Déploiement sur 10 campings pilotes dès M3 (demande non censurée, XGBoost TTC, OR-Tools double objectif, veille 50 bassins). Ouverture du cockpit Dash sur 3 pôles (&lt; 5 s), puis pilote Champion/Challenger en mai 2027 avant le gel d'été du 1er juin.</p>
+                    <div class="tag-row"><span class="pill">Epics 2, 3 et 4</span><span class="pill terracotta">Go/No-Go: avant 1er juin</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">T3 PILOTE ÉTÉ // JUIN À AOÛT 2027 (M7-M9)</span>
+                    <h3>Mode copilote été et preuve ROI</h3>
+                    <p>Zéro écriture automatique sur juillet-août (validation humaine obligatoire), revue matinale limitée aux alertes (&lt; 15 min/jour), 100 % des débrayages motivés en 1 ligne et suivi des retouches manuelles. Bilan statistique par régions séparées en fin d'été.</p>
+                    <div class="tag-row"><span class="pill emerald">74 % CA protégé</span><span class="pill">Go/No-Go: débrayage &lt; 25 %</span></div>
+                </div>
+                <div class="card highlight">
+                    <span class="card-index">T4 SCALE // SEPT. À NOV. 2027+ (M10-M18)</span>
+                    <h3>100 % Resalys, Early Booking 2028 et phase 2</h3>
+                    <p>Généralisation à tout le parc Resalys (4 grilles marché, Early Booking 2028 dès octobre), intégration des rachats sous 14 jours et automatisation bornée. En phase 2 (M13-M18): extension aux ancillaries, recommandation web, call center et assistant IA.</p>
+                    <div class="tag-row"><span class="pill">Epics 5 et 6</span><span class="pill emerald">Cible +3 % à +5 % RevPAC</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>FEUILLE DE ROUTE 12 MOIS ET VAGUE 2 / 24 SPRINTS CADENCÉS SUR LA SAISONNALITÉ ECG</span>
+                <span>12 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 13 : PLAYBOOK DE CONTINGENCE (3 PIVOTS)
+         =================================================== -->
+    <section class="slide" data-slide="13">
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">12 · Gestion des risques: trois pivots exécutables en 24 à 48 heures</span>
+            <h2 class="slide-title reveal reveal-d1">Trois plans de contingence (<em>Plan A vers Plan B</em>) déclenchés sur seuils objectifs</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Aucun aléa technique, statistique ou contractuel ne bloque le programme: chaque pivot commute par configuration sans réécrire la plateforme.
+            </p>
+            <div class="grid-3 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">PIVOT 01 // HISTORIQUE EXTERNE INCOMPLET OU RETARD MAI</span>
+                    <h3>Sortie en deux temps et suivi matinal</h3>
+                    <p>Déclenchement si l'historique du prestataire compte moins de 90 jours exploitables en S1-S2, ou si le pilote dérive après le 31 mai.</p>
+                    <p>Bascule en 24h vers une capture matinale des prix à 06h00 CET et le mode copilote sans écriture automatique l'été. On internalise d'abord les ailes de saison, les courts séjours et Alannia, puis on coupe le prestataire après l'été 2028.</p>
+                    <div class="tag-row"><span class="pill emerald">Zéro risque été 2027</span><span class="pill">Audit prospectif</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">PIVOT 02 // LENTEUR API RESALYS OU RETARD IMPORT</span>
+                    <h3>Envoi des seuls prix modifiés et repli rapide</h3>
+                    <p>Déclenchement si le test S2 dépasse 45 min d'écriture, si le repli dépasse 2 heures, ou si l'import Resalys arrive après 06h00 CET deux fois en M1.</p>
+                    <p>Bascule en 48h sur l'envoi des seuls prix ayant bougé de plus de 2 % ou 5 EUR sur les 60 prochains jours (-75 à -85 % d'appels API), reprise automatique sur les données de la veille à 06h00 CET et retour aux grilles Resalys en moins de 30 min.</p>
+                    <div class="tag-row"><span class="pill">Prêt à 07h30 CET</span><span class="pill emerald">Repli &lt; 30 min</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">PIVOT 03 // REFUS COOKIES OU CHARGE RM TROP FORTE</span>
+                    <h3>Calcul interne et file prioritaire unique</h3>
+                    <p>Déclenchement si les refus cookies dépassent 35 % sur un marché clé en M2, si la revue matinale dépasse 25 min (&gt; 150 lignes) ou en cas de rejet d'un double outil.</p>
+                    <p>Bascule en 48h vers l'estimation interne de la demande non servie à partir des dates complètes Resalys, passage intégral sur la file prioritaire Dash et cantonnement aux sites propres si le débrayage sur sites partenaires dépasse 40 %.</p>
+                    <div class="tag-row"><span class="pill terracotta">Indépendant CNIL</span><span class="pill">Charge équipe tenue</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>PLAYBOOK DE CONTINGENCE / COMMUTATION DÉTERMINISTE PAR CONFIGURATION SANS REFONTE</span>
+                <span>13 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 14 : LES 4 ACCÉLÉRATEURS OPÉRATIONNELS
+         =================================================== -->
+    <section class="slide" data-slide="14">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">13 · Retour d'expérience terrain: quatre accélérateurs d'exécution</span>
+            <h2 class="slide-title reveal reveal-d1">Contourner les <em>quatre inerties classiques</em> des grands groupes dès le premier trimestre</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                La vélocité sur 12 mois tient à des choix pragmatiques qui livrent du revenu mesurable dès M2 tout en protégeant la bande passante de l'équipe d'Aix.
+            </p>
+            <div class="grid-4 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">ACCÉLÉRATEUR 01 // RÈGLES EXCEL/VBA PRIORITAIRES</span>
+                    <h3>Règles métier dès le mois 2</h3>
+                    <p>Plutôt que d'auditer 450 sites pendant trois mois, cibler dès S1-S3 les 20 % de campings concentrant la moitié des débrayages. Les règles des fichiers Excel/VBA passent dans Dataform dès le mois 2 (écarts pays et planchers partenaires).</p>
+                    <div class="tag-row"><span class="pill emerald">Valeur prouvée à M+2</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">ACCÉLÉRATEUR 02 // TEST API SEMAINE 2</span>
+                    <h3>Tests techniques dès la semaine 2</h3>
+                    <p>Tester le débit de l'API Resalys, chronométrer le retour aux grilles en moins de 30 min et vérifier l'import de 05h45 dès S2 lève le principal risque technique, pendant que la Finance audite le contrat prestataire dès S1.</p>
+                    <div class="tag-row"><span class="pill">Zéro surprise tardive</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">ACCÉLÉRATEUR 03 // 10 CAMPINGS PILOTES</span>
+                    <h3>Périmètre pilote avant l'échelle</h3>
+                    <p>Livrer dès M2-M3 une chaîne complète sur 10 campings (5 propres dont Alannia, 5 partenaires FR/NL) valide le cockpit Dash et les 6 motifs de débrayage, tout en gagnant un mois sur la Phase 2 grâce à l'estimation directe des semaines complètes.</p>
+                    <div class="tag-row"><span class="pill emerald">-1 mois sur Phase 2</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">ACCÉLÉRATEUR 04 // PARALLÉLISATION ET RACHATS</span>
+                    <h3>Calcul rapide et modèle prêt pour les rachats</h3>
+                    <p>Entraîner XGBoost et Optuna le dimanche et lancer le calcul du matin en 20 tâches parallèles par région tient le batch sous 20 minutes. Un modèle standard d'import en 6 tables intègre chaque nouveau camping racheté en moins de 14 jours.</p>
+                    <div class="tag-row"><span class="pill">Calcul &lt; 20 min</span></div>
+                </div>
+            </div>
+            <div class="slide-footer">
+                <span>ACCÉLÉRATEURS TERRAIN / TIME-TO-VALUE RAPIDE SUR ÉQUIPE RESTREINTE</span>
+                <span>14 / 15</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================
+         SLIDE 15 : SYNTHÈSE ET ALIGNEMENT PROFIL (CLOSING)
+         =================================================== -->
+    <section class="slide" data-slide="15">
+        <div class="bg-orb orb-gold"></div>
+        <div class="bg-orb orb-emerald"></div>
+        <div class="bg-grid"></div>
+        <div class="slide-content">
+            <span class="eyebrow reveal">14 · Synthèse et alignement avec le poste Data Scientist Senior</span>
+            <h2 class="slide-title reveal reveal-d1">Une double culture <em>business et MLOps</em> éprouvée sur stock périssable saisonnier</h2>
+            <p class="slide-subtitle reveal reveal-d2">
+                Diplômée d'EM Lyon et Architecte IA (RNCP niveau 7), Caroline Heymes relie 15 ans de pilotage d'études métier à l'industrialisation Python, BigQuery et GCP.
+            </p>
+            <div class="grid-3 reveal reveal-d3">
+                <div class="card highlight">
+                    <span class="card-index">PREUVE 01 // MIROIR MÉTIER STOCK PÉRISSABLE</span>
+                    <h3>Saisonnalité extrême et impact chiffré</h3>
+                    <p>Chez Interflora, pilotage des prévisions de ventes par séries temporelles (Prophet, 15 % de MAPE) sur des pics comparables aux pointes estivales, plateforme de veille prix 4 pays (FR, ES, IT, PT) sous Scrapy/Playwright/GraphQL et optimisation sous BigQuery/Streamlit dégageant 500 kEUR d'économies annuelles.</p>
+                    <div class="tag-row"><span class="pill emerald">15 % MAPE pics</span><span class="pill">500 kEUR/an BigQuery</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">PREUVE 02 // STACK GCP, EXPLICABILITÉ ET MLOPS</span>
+                    <h3>Industrialisation Champion/Challenger</h3>
+                    <p>Maîtrise directe de Python, SQL, BigQuery, Scikit-learn, XGBoost, Docker et Airflow. Projets publics vérifiables: Fraud Detection Pipeline (FastAPI, détection de drift Evidently AI, gouvernance Champion/Challenger MLflow), LyonFlow (entraînement distribué Ray/Optuna) et Strategic Intelligence Crew (BMAD/CrewAI).</p>
+                    <div class="tag-row"><span class="pill">Python / BigQuery / Docker</span><span class="pill emerald">Drift et MLflow</span></div>
+                </div>
+                <div class="card">
+                    <span class="card-index">PREUVE 03 // POSTURE HYBRIDE ET EXÉCUTION</span>
+                    <h3>Co-construction Aix, Montpellier et Breda</h3>
+                    <p>Plus de dix ans en direction d'études chez GL events (moteur d'ingestion 10M+ pages/an) pour traduire la donnée devant les comités de direction. Cette proposition apporte dès le premier jour une méthodologie outillée (PRD, invariants AD-01..07, stress-test, RACI et feuille de route 12 mois).</p>
+                    <div class="tag-row"><span class="pill">Data Storytelling</span><span class="pill emerald">Cadre prêt à l'emploi</span></div>
+                </div>
+            </div>
+            <div class="banner-note reveal reveal-d3" data-public-contact="true">
+                <strong>Caroline Heymes</strong> · Data Scientist Senior et Lead IA · Lyon, Paris (poste basé à Aix-en-Provence) · caroline.heymes@gmail.com · linkedin.com/in/caroline-heymes/ · github.com/caroheymes
+            </div>
+            <div class="slide-footer">
+                <span>EUROPEAN CAMPING GROUP / PROPOSITION D'APPROCHE POUR L'ENTRETIEN</span>
+                <span>15 / 15</span>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Full-Screen Lightbox for Architecture Diagram -->
+<div id="archLightbox" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(8,10,16,0.92); backdrop-filter:blur(10px); align-items:center; justify-content:center; padding:2rem; cursor:zoom-out;">
+    <div style="position:relative; max-width:96vw; max-height:92dvh; background:#FFFFFF; border-radius:12px; padding:0.75rem; box-shadow:0 24px 64px rgba(0,0,0,0.65); border:2px solid var(--accent-primary);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.45rem; padding:0 0.5rem; font-family:var(--font-mono); font-size:0.78rem; color:#111418; gap:1rem;">
+            <strong>ARCHITECTURE CIBLE ECG / PIPELINE SERVERLESS GCP, BIGQUERY ET RESALYS 2-WAYS (AD-01 À AD-07)</strong>
+            <span style="background:#111418; color:#F5F2EB; padding:0.2rem 0.65rem; border-radius:999px; font-size:0.72rem; white-space:nowrap;">Cliquer ou [Échap] pour fermer</span>
+        </div>
+        <img id="archLightboxImg" src="architecture.png" alt="Architecture cible ECG sur GCP, BigQuery et Resalys (plein écran)" style="max-width:93vw; max-height:82dvh; width:auto; height:auto; object-fit:contain; display:block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div id="archLightboxFallback" style="display:none; flex-direction:column; gap:0.65rem; padding:1.25rem; min-width:min(82vw, 920px); color:#0F172A; font-family:var(--font-mono); font-size:0.82rem;">
+            <div class="arch-lane-mini blue"><span><strong>Étape 1 (AD-03)</strong> Import Resalys 05h45 -&gt; BigQuery -&gt; Blocage données personnelles + historique prix 30 jours</span><span>Zéro PII</span></div>
+            <div class="arch-lane-mini blue"><span><strong>Étape 2 (AD-02, AD-04)</strong> Cloud Workflows -&gt; 20 tâches Cloud Run (&lt; 20 min): prévision XGBoost TTC + optimiseur OR-Tools HT</span><span>Propre vs TO</span></div>
+            <div class="arch-lane-mini"><span><strong>Étape 3 (AD-01, AD-05)</strong> Cockpit Dash (&lt; 5 s) + motif débrayage en 1 ligne -&gt; Envoi des seuls prix modifiés vers Resalys</span><span>Caches 2-ways</span></div>
+            <div class="arch-lane-mini warn"><span><strong>Étape 4 (AD-06, AD-07)</strong> Test automatique de 100 paniers (07h25) + 4 arrêts d'urgence -&gt; Retour grille Resalys (&lt; 30 min)</span><span>Sécurité</span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+/**
+ * Presentation Controller (ECC frontend-slides standard)
+ * Handles keyboard, wheel, touch navigation, progress indicator, IntersectionObserver, lightbox, and live theme switching.
+ */
+class SlidePresentation {
+    constructor() {
+        this.slides = Array.from(document.querySelectorAll('.slide'));
+        this.navDotsContainer = document.getElementById('navDots');
+        this.progressBar = document.getElementById('progressBar');
+        this.themeBtns = Array.from(document.querySelectorAll('[data-set-theme]'));
+        this.themes = ['swiss', 'luxury', 'bold'];
+        this.currentIndex = 0;
+        this.isWheelLocked = false;
+        this.touchStartY = 0;
+
+        this.initDots();
+        this.initObserver();
+        this.initKeyboard();
+        this.initWheel();
+        this.initTouch();
+        this.initThemes();
+        this.initLightbox();
+        this.updateUI(0);
+    }
+
+    initLightbox() {
+        const trigger = document.getElementById('archZoomTrigger');
+        const lightbox = document.getElementById('archLightbox');
+        if (!trigger || !lightbox) return;
+        trigger.addEventListener('click', () => {
+            lightbox.style.display = 'flex';
+        });
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    }
+
+    initDots() {
+        this.slides.forEach((_, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'nav-dot';
+            btn.setAttribute('aria-label', `Aller à la slide ${idx + 1}`);
+            btn.addEventListener('click', () => this.goToSlide(idx));
+            this.navDotsContainer.appendChild(btn);
+        });
+        this.dots = Array.from(this.navDotsContainer.querySelectorAll('.nav-dot'));
+    }
+
+    initObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    const idx = this.slides.indexOf(entry.target);
+                    if (idx !== -1) {
+                        this.currentIndex = idx;
+                        this.updateUI(idx);
+                    }
+                }
+            });
+        }, { threshold: 0.55 });
+
+        this.slides.forEach(slide => observer.observe(slide));
+    }
+
+    goToSlide(idx) {
+        const bounded = Math.max(0, Math.min(this.slides.length - 1, idx));
+        this.currentIndex = bounded;
+        this.slides[bounded].scrollIntoView({ behavior: 'smooth' });
+        this.updateUI(bounded);
+    }
+
+    updateUI(idx) {
+        this.dots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+        const pct = ((idx + 1) / this.slides.length) * 100;
+        this.progressBar.style.width = `${pct}%`;
+    }
+
+    initKeyboard() {
+        window.addEventListener('keydown', (e) => {
+            const lb = document.getElementById('archLightbox');
+            if (e.key === 'Escape' && lb && lb.style.display !== 'none') {
+                lb.style.display = 'none';
+                return;
+            }
+            if (lb && lb.style.display === 'flex') return;
+            if (['ArrowDown', 'PageDown', ' ', 'ArrowRight'].includes(e.key)) {
+                e.preventDefault();
+                this.goToSlide(this.currentIndex + 1);
+            } else if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(e.key)) {
+                e.preventDefault();
+                this.goToSlide(this.currentIndex - 1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                this.goToSlide(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                this.goToSlide(this.slides.length - 1);
+            } else if (e.key.toLowerCase() === 't') {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'swiss';
+                const nextTheme = this.themes[(this.themes.indexOf(currentTheme) + 1) % this.themes.length];
+                this.setTheme(nextTheme);
+            }
+        });
+    }
+
+    initWheel() {
+        window.addEventListener('wheel', (e) => {
+            const lb = document.getElementById('archLightbox');
+            if (lb && lb.style.display === 'flex') return;
+            if (this.isWheelLocked || Math.abs(e.deltaY) < 24) return;
+            this.isWheelLocked = true;
+            if (e.deltaY > 0) {
+                this.goToSlide(this.currentIndex + 1);
+            } else {
+                this.goToSlide(this.currentIndex - 1);
+            }
+            setTimeout(() => { this.isWheelLocked = false; }, 650);
+        }, { passive: true });
+    }
+
+    initTouch() {
+        window.addEventListener('touchstart', (e) => {
+            this.touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener('touchend', (e) => {
+            const lb = document.getElementById('archLightbox');
+            if (lb && lb.style.display === 'flex') return;
+            const deltaY = this.touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(deltaY) > 45) {
+                this.goToSlide(this.currentIndex + (deltaY > 0 ? 1 : -1));
+            }
+        }, { passive: true });
+    }
+
+    initThemes() {
+        this.themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setTheme(btn.getAttribute('data-set-theme'));
+            });
+        });
+    }
+
+    setTheme(themeName) {
+        document.documentElement.setAttribute('data-theme', themeName);
+        this.themeBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-set-theme') === themeName);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    new SlidePresentation();
+});
+</script>
+</body>
+</html>
